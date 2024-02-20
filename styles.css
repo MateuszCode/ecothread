@@ -1,0 +1,183 @@
+/* GENERAL STYLING */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0; 
+}
+
+* {
+    font-family: "Cabin", sans-serif;
+    font-weight: lighter;
+    color: rgb(16, 16, 16);
+
+  }
+
+.body {
+    background: #FBF9EF;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+
+}
+
+/* HEADER */
+
+.name-logo {
+    font-weight: 500;
+}
+
+.login-link,
+.register-link {
+    font-weight: 700;
+
+}
+
+
+
+@media (max-width: 500px) {
+    header {
+        font-size: 0.8rem
+    }
+}
+
+@media (max-width: 750px) {
+    header {
+        text-align: center;
+        margin: 1.5em;
+    }
+
+    nav {
+        width: 70%;
+        margin: 2em auto;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    
+    .login {
+        display: flex;
+        justify-content: space-around;
+        margin: 0 auto;
+        background-color: #35452B;
+
+    }
+
+    .register-link,
+    .login-link {
+        color: #FBF9EF;
+        background-color: #35452B;
+        padding: 0.8em;
+        width: 100%;
+
+    }
+}
+
+@media (min-width: 750px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1.5em;
+        padding: 1em;
+        font-size: 0.8rem
+    }
+    
+    .name-logo {
+        font-weight: 500;
+    }
+ 
+    
+    .navigation-link {
+        margin-left: 1.5em;
+    }
+    
+    
+    .login-link {
+        margin-right: 1em
+        
+    }
+    
+    .register-link {
+       padding: 0.6em 2em;
+       color: #FBF9EF;
+        background-color: #35452B;
+        border-radius: 25px;
+    }
+
+   
+}
+
+@media (min-width: 1000px) {
+
+    header {
+        font-size: 1rem
+    }
+    
+}
+
+/* FOOTER */
+
+footer {
+    margin: 1.5em;
+    text-align: center;
+}
+
+.name-logo-footer {
+    font-weight: 500
+}
+.nav-footer {
+    margin: 1em;
+    margin-bottom: 2em
+}
+
+.copyright-socials {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+    border-top: solid 1px #D9D9D9;
+    padding: 1.5em;
+}
+
+.navigation-link-footer {
+    margin: 1em;
+}
+
+.socials-icon {
+    font-size: 1.1rem;
+    margin-left: 1em
+}
+
+@media (max-width: 500px) {
+
+    footer {
+        font-size: 0.8rem
+    }
+}
+
+@media (min-width: 750px) {
+
+    footer {
+        font-size: 0.8rem
+    }
+    
+    .socials-icon {
+        font-size: 1rem
+    }
+   
+}
+
+@media (min-width: 1000px) {
+
+    footer {
+        font-size: 1rem
+    }
+    
+    .socials-icon {
+        font-size: 1.2rem
+    }
+}
