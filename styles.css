@@ -24,6 +24,56 @@ a {
 
 }
 
+.btn {
+    padding: 0.6em 2em;
+    color: #FBF9EF;
+     background-color: #35452B;
+     border-radius: 25px;
+     font-weight: 700;
+
+ }
+
+/* FONTS */
+
+@media (max-width: 500px) {
+    header,
+    footer,
+    .home-page {
+        font-size: 0.8rem
+    }
+    
+}
+
+@media (min-width: 750px) {
+
+    header,
+    footer,
+    .home-page {
+        font-size: 0.8rem
+    }
+    
+    .socials-icon {
+        font-size: 1rem
+    }
+   
+}
+
+@media (min-width: 1000px) {
+
+    header,
+    footer,
+    .home-page {
+        font-size: 1rem
+    }
+
+    
+    .socials-icon {
+        font-size: 1.2rem
+    }
+    
+    
+}
+
 /* HEADER */
 
 .name-logo {
@@ -36,13 +86,6 @@ a {
 
 }
 
-
-
-@media (max-width: 500px) {
-    header {
-        font-size: 0.8rem
-    }
-}
 
 @media (max-width: 750px) {
     header {
@@ -84,7 +127,6 @@ a {
         align-items: center;
         margin: 1.5em;
         padding: 1em;
-        font-size: 0.8rem
     }
     
     .name-logo {
@@ -101,29 +143,16 @@ a {
         margin-right: 1em
         
     }
-    
-    .register-link {
-       padding: 0.6em 2em;
-       color: #FBF9EF;
-        background-color: #35452B;
-        border-radius: 25px;
-    }
-
    
 }
 
-@media (min-width: 1000px) {
-
-    header {
-        font-size: 1rem
-    }
-    
-}
 
 /* FOOTER */
 
 footer {
     margin: 1.5em;
+    margin-bottom: 0;
+    margin-top: 2em;
     text-align: center;
 }
 
@@ -132,7 +161,7 @@ footer {
 }
 .nav-footer {
     margin: 1em;
-    margin-bottom: 2em
+    margin-bottom: 1.5em
 }
 
 .copyright-socials {
@@ -140,7 +169,8 @@ footer {
     justify-content: space-between;
     margin: 1em;
     border-top: solid 1px #D9D9D9;
-    padding: 1.5em;
+    padding: 1em;
+    padding-top: 2em;
 }
 
 .navigation-link-footer {
@@ -152,32 +182,103 @@ footer {
     margin-left: 1em
 }
 
-@media (max-width: 500px) {
-
-    footer {
-        font-size: 0.8rem
-    }
-}
-
 @media (min-width: 750px) {
-
-    footer {
-        font-size: 0.8rem
+    .feature-cards {
+        display: grid;
+        grid-template: 1fr 1fr / 1fr 1fr;
     }
-    
-    .socials-icon {
-        font-size: 1rem
-    }
-   
 }
 
-@media (min-width: 1000px) {
+/* HOME */
 
-    footer {
-        font-size: 1rem
+
+.hero {
+    padding: 4em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.hero-nav {
+    margin-top: 2.5em;
+}
+
+.hero-shop-now,
+.hero-learn-more {
+    margin: 1em
+}
+
+.features {
+    background: #768350;
+    padding: 3.5em;
+}
+
+.feature-heading {
+    color: #FBF9EF;
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: center;
+
+}
+
+.feature-heading-explore {
+    margin-bottom: 2em;
+}
+
+.explore-collection {
+    padding: 4.5em;
+    text-align: center;
+}
+
+.faq-container {
+    padding: 4.5em;
+    background: #c6b190;
+    
+}
+
+.faq-heading {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+}
+
+.faq-question {
+    font-weight: 700;
+    margin: 1em 0
+}
+
+.faq-heading-text {
+    width: 70%;
+    margin-bottom: 2em;
+}
+
+@media(min-width: 750px) {
+    .faq-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
-    .socials-icon {
-        font-size: 1.2rem
-    }
+}
+
+/* CARD COMPONENT */
+
+.card-container {
+    background: #e9e7de;
+    border-radius: 10px;
+    padding: 2em;
+    display: flex;
+    margin: 1em;
+}
+
+.card-info {
+    margin-left: 1em;
+}
+
+.card-title {
+    font-weight: 500;
+    margin-bottom: 1em
+}
+
+.card-icon {
+    font-size: 1.4rem
 }

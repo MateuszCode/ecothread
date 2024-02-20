@@ -22,7 +22,7 @@ export default function App() {
                 </nav>
                 <div className="login">
                   <Link className='login-link'>Login</Link>
-                  <Link className='register-link'>Register</Link>
+                  <Link className='register-link btn'>Register</Link>
                 </div>
             </header>
             <Routes>
