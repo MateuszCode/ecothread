@@ -1,5 +1,5 @@
 import React from 'react'
-import Filters from './Filters'
+import CategoryFilters from '../../Components/CategoryFilters'
 import Item from './Item'
 export default function Shop() {
 
@@ -8,7 +8,7 @@ export default function Shop() {
     const [productsData, setProductsData] = React.useState([])
     const [filters, setFilters] = React.useState({
         category: null,
-        priceRange: null,
+        price: null,
         rating: null
     })
 
@@ -20,7 +20,9 @@ export default function Shop() {
             try {
             const data = await fetch('https://fakestoreapi.com/products')
             const json = await data.json();
-            setProductsData(json)
+            setProductsData(json.filter(product => {
+                            return product.category != "electronics"
+            }))
             } catch(err) {
                 setError(err)
             } finally {
@@ -30,12 +32,27 @@ export default function Shop() {
         fetchData()
     }, [])
 
-    const productsWithoutElectronics = productsData.filter(product => {
-        return product.category != "electronics"
-    })
+    function filterProducts(products) {
 
-    const displayedProducts = productsWithoutElectronics.map(product => {
+        const filteredProducts = products.filter(product => {
+            const categoryFilter = filters.category ? filters.category : product.category
+            const priceFilter = filters.price ? filters.price : product.price
+            const ratingFilter = filters.rating ? filters.rating : product.rating.rate
 
+            if (product.category === categoryFilter && 
+                product.rating.rate >= ratingFilter && 
+                product.price <= priceFilter) {
+                return true 
+            } else {
+                return false
+            }
+
+        })
+
+        return filteredProducts
+    }
+
+    const displayedProducts = filterProducts(productsData).map(product => {
 
         return <Item
         title={product.title}
@@ -56,15 +73,9 @@ export default function Shop() {
         <div className="top-pannel">
             <p>Sort placeholder</p>
         </div>
-        <div className="filters-products">
-            {/* <Filters onChange={setPriceRange} priceRange={priceRange}
-            setCategory={setCategory}
-            /> */}
-            <div className="filters">
-                <p>
-                    Filters placeholder
-                </p>
-            </div>
+        <div className="filters-products"> 
+            <CategoryFilters setFilters={setFilters}/>
+            <PriceSlider setFilters={setFilters}/>
             <div className="products">
                 {displayedProducts}
             </div>
