@@ -1,6 +1,4 @@
 import React from 'react';
-import 'react-range-slider-input/dist/style.css';
-
 
 export default function CategoryFilters({setFilters}) {
 
@@ -25,35 +23,35 @@ export default function CategoryFilters({setFilters}) {
     }
  
     return (
-        <div className="filters">
+        <div className="category-filters-container">
             <h3 
             onClick={() => setDropdown(oldValue => !oldValue)}
             style={{cursor:"pointer"}}
             className="category-heading"
             >Category:</h3>
-            <div style={{display: dropdown ? "block" : "none" }} className="category-filters">
+            <div style={{display: dropdown ? "none" : "block" }} className="category-filters">
                 <button 
                 id="1" 
                 value="men's clothing"  
-                className={activeButton === "1" ? "active-filter-btn filter-btn" : "filter-btn"} 
+                className={activeButton === "1" ? "active-cat-filter-btn cat-filter-btn" : "cat-filter-btn"} 
                 onClick={handleClick}>
                     Men
                 </button>
                 <button 
                 id="2" 
                 value="women's clothing"  
-                className={activeButton === "2" ? "active-filter-btn filter-btn" : "filter-btn"} 
+                className={activeButton === "2" ? "active-cat-filter-btn cat-filter-btn" : "cat-filter-btn"} 
                 onClick={handleClick}>
                     Women
                 </button>
                 <button 
                 id="3" 
                 value="jewelery"  
-                className={activeButton === "3" ? "active-filter-btn filter-btn" : "filter-btn"} 
+                className={activeButton === "3" ? "active-cat-filter-btn cat-filter-btn" : "cat-filter-btn"} 
                 onClick={handleClick}>
                     Jewelery
                 </button>
-                <button onClick={handleClick} className="filter-btn">
+                <button onClick={handleClick} className="cat-filter-btn">
                     All categories
                 </button>
             </div>
