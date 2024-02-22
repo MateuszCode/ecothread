@@ -32,8 +32,8 @@ export default function Shop() {
                 setLoading(false)
             }
         }
-        console.log("dataFetched")
         fetchData()
+        
     }, [])
 
     function filterProducts(products) {
@@ -59,7 +59,6 @@ export default function Shop() {
         } else if (sort === "sortDescending") {
             sortedArray.sort((a,b) => b.price - a.price)
         } else if (sort === "default") {
-            console.log("default")
             sortedArray.sort((a,b) => b.id - a.id)
         }
 
@@ -105,3 +104,4 @@ export default function Shop() {
     </div>
     )
 }
+

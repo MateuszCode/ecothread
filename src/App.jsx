@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Shop from "./pages/Shop"
 import Contact from "./pages/Contact"
+import ItemPage from "./pages/ItemPage"
 import { TfiInstagram } from "react-icons/tfi";
 import { TfiFacebook } from "react-icons/tfi";
 import { TfiTwitter } from "react-icons/tfi";
@@ -30,6 +31,7 @@ export default function App() {
               <Route path="/about" element={<About />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/contact" element={<Contact />}>Contact</Route>
+              <Route path="/shop/:id" element={<ItemPage />} />
             </Routes>
             <footer>
               <h1 className="name-logo-footer">ECOTHREAD</h1>
