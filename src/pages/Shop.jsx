@@ -1,7 +1,8 @@
-import React from 'react'
-import CategoryFilters from '../../Components/CategoryFilters'
-import Sort from './Sort'
+import React from 'react';import CategoryFilters from '../../Components/CategoryFilters'
+import { useSearchParams, useLocation  } from "react-router-dom";
+import Sort from '../../Components/Sort'
 import ProductsPanel from '../../Components/ProductsDisplayComponent'
+import {getProductsData} from '../../Data/api'
 
 export default function Shop() {
 
@@ -16,31 +17,25 @@ export default function Shop() {
     })
     const [sort, setSort] = React.useState("default")
 
+
     React.useEffect(function() {
 
-        async function fetchData() {
-            setError(null)
-            setLoading(true)
-            try {
-            const data = await fetch('https://fakestoreapi.com/products')
-            const json = await data.json();
-            setProductsData(json.filter(product => {
-                            return product.category != "electronics"
-            }))
-            } catch(err) {
-                setError(err)
-            } finally {
-                setLoading(false)
-            }
+    async function fetchData() {
+        setError(null)
+        setLoading(true)
+        try {
+        const json = await getProductsData()
+        setProductsData(json)
+        } finally {
+            setLoading(false)
         }
-        fetchData()
-        
+    }
+    fetchData()
+    
     }, [])
-
     
 
-    return (loading ? <h1>Loading</h1> : 
-    
+    return (
     <div className="shop-page">
         <div className="top-pannel">
             <Sort setSort={setSort} />

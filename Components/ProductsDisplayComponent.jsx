@@ -1,8 +1,8 @@
 import React from 'react'
-import Item from '../src/pages/Item'
+import Item from './ItemCard'
 
 
-export default function productsPanel({productsData, filters, sort}) {
+export default function productsPanel({productsData, filters, sort, loading}) {
     function filterProducts(products) {
 
         const filteredProducts = products.filter(product => {
@@ -46,7 +46,7 @@ export default function productsPanel({productsData, filters, sort}) {
         id={product.id}
         key={product.id}
         className="product"
-        />
+        /> 
     }) 
 
     return displayedProducts

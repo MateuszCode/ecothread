@@ -14,12 +14,24 @@ export default function App() {
     return (
           <BrowserRouter>
             <header>
-                <h1 className="name-logo">ECOTHREAD</h1>
+                <Link to="/"><h1 className="name-logo">ECOTHREAD</h1></Link>
                 <nav>
-                    <NavLink to="/" className='navigation-link'>Home</NavLink>
-                    <NavLink to="/shop" className='navigation-link'>Shop</NavLink>
-                    <NavLink to="/about" className='navigation-link'>About Us</NavLink>
-                    <NavLink to="/contact" className='navigation-link'>Contact</NavLink>
+                    <NavLink to="/" 
+                    className='navigation-link'
+                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
+                    >Home</NavLink>
+                    <NavLink to="/shop" 
+                    className='navigation-link'
+                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
+                    >Shop</NavLink>
+                    <NavLink to="/about" 
+                    className='navigation-link'
+                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
+                    >About Us</NavLink>
+                    <NavLink to="/contact" 
+                    className='navigation-link'
+                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
+                    >Contact</NavLink>
                 </nav>
                 <div className="login">
                   <Link className='login-link'>Login</Link>

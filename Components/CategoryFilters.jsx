@@ -1,4 +1,6 @@
 import React from 'react';
+import { useSearchParams, useLocation, useParams, Link } from "react-router-dom";
+
 
 export default function CategoryFilters({setFilters}) {
 
@@ -21,7 +23,7 @@ export default function CategoryFilters({setFilters}) {
         }
         
     }
- 
+    
     return (
         <div className="category-filters-container">
             <h3 

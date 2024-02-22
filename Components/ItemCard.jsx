@@ -5,7 +5,9 @@ import { Link } from "react-router-dom"
 export default function Item({ title, description, price, image, rating, ratingCount, className, id}) {
 
     return (
-        <Link to={`${id}`}>
+       
+        <Link to={`${id}`}
+        state={{itemId: id}}>
             <div className={`product-card ${className}`}>
                 <div className="img-container">
                     <img src={image} className="product-card-img"/>
@@ -20,14 +22,7 @@ export default function Item({ title, description, price, image, rating, ratingC
                     <p className="product-card-price">{price} $</p>
                 </div>
             </div>
-        </Link>
+        </Link> 
     )
 }
 
-
-// title={product.title}
-// description={product.description}
-// price={product.price}
-// image={product.image}
-// rating={product.rating.rate}
-// ratingCount={product.rating.ratingCount}
