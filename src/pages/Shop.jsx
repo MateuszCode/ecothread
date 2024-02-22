@@ -1,7 +1,8 @@
 import React from 'react'
 import CategoryFilters from '../../Components/CategoryFilters'
-import Item from './Item'
 import Sort from './Sort'
+import ProductsPanel from '../../Components/ProductsDisplayComponent'
+
 export default function Shop() {
 
     const [loading, setLoading] = React.useState(null)
@@ -36,53 +37,7 @@ export default function Shop() {
         
     }, [])
 
-    function filterProducts(products) {
-
-        const filteredProducts = products.filter(product => {
-            const categoryFilter = filters.category ? filters.category : product.category
-
-            if (product.category === categoryFilter) {
-                return true 
-            } else {
-                return false
-            }
-        })
-
-        return filteredProducts
-    }
- 
-    function sortProducts() {
-        const sortedArray = productsData
-
-        if (sort === "sortAscending") {
-            sortedArray.sort((a,b) => a.price - b.price)
-        } else if (sort === "sortDescending") {
-            sortedArray.sort((a,b) => b.price - a.price)
-        } else if (sort === "default") {
-            sortedArray.sort((a,b) => b.id - a.id)
-        }
-
-        return sortedArray
-
-    }
-
-    sortProducts()
-
-    const displayedProducts = filterProducts(productsData).map(product => {
-
-        return <Item
-        title={product.title}
-        description={product.description}
-        price={product.price}
-        image={product.image}
-        rating={product.rating.rate}
-        ratingCount={product.rating.count}
-        id={product.id}
-        key={product.id}
-        className="product"
-        />
-
-    })
+    
 
     return (loading ? <h1>Loading</h1> : 
     
@@ -95,12 +50,14 @@ export default function Shop() {
               <CategoryFilters setFilters={setFilters}/>
             </div>
             <div className="products">
-                {displayedProducts}
+                <ProductsPanel
+                productsData = {productsData}
+                filters = {filters}
+                sort = {sort} 
+                />
             </div>
 
         </div>
-        
-
     </div>
     )
 }
