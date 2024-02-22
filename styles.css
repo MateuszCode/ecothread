@@ -24,6 +24,7 @@ a {
 
 }
 
+
 .btn {
     padding: 0.6em 2em;
     color: #FBF9EF;
@@ -59,6 +60,11 @@ button {
     .rating {
         font-size: 0.7rem;
     }
+
+    .sort-btn {
+        font-size: 0.6rem;
+
+    }
    
 }
 
@@ -75,6 +81,11 @@ button {
     
     .rating {
         font-size: 0.8rem;
+    }
+
+    .sort-btn {
+        font-size: 0.8rem;
+
     }
 }
 
@@ -291,7 +302,8 @@ footer {
 /* SHOP LAYOUT */
 
 .top-pannel {
-    padding: 1em 3em
+    padding: 1em 3em;
+    padding-bottom: 0;
 }
 
 .products {
@@ -360,6 +372,7 @@ footer {
 
 .cat-filter-btn:hover {
     cursor: pointer;
+    scale: 1.1
 }
 
 
@@ -439,3 +452,43 @@ footer {
     font-weight: 700
 }
 
+/* SORT */
+
+.sort-container {
+    margin: 0 auto;
+    margin-left: auto; 
+    margin-right: 0;
+    width: 6em
+}
+
+.sort-heading {
+    position: relative;
+    margin-bottom: 0;
+}
+
+.sort-buttons {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    left: auto; 
+    right: 30px;
+    margin: 0  
+}
+
+.sort-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: #c6b190;
+    margin-top: 0.2em;
+    color: #FBF9EF;
+    padding: 0.3em 0.7em;
+    border-radius: 5px;
+}
+
+.sort-btn:hover {
+    cursor: pointer;
+    scale: 1.05
+}

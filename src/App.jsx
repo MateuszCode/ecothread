@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Shop from "./pages/Shop"
@@ -15,10 +15,10 @@ export default function App() {
             <header>
                 <h1 className="name-logo">ECOTHREAD</h1>
                 <nav>
-                    <Link to="/" className='navigation-link'>Home</Link>
-                    <Link to="/shop" className='navigation-link'>Shop</Link>
-                    <Link to="/about" className='navigation-link'>About Us</Link>
-                    <Link to="/contact" className='navigation-link'>Contact</Link>
+                    <NavLink to="/" className='navigation-link'>Home</NavLink>
+                    <NavLink to="/shop" className='navigation-link'>Shop</NavLink>
+                    <NavLink to="/about" className='navigation-link'>About Us</NavLink>
+                    <NavLink to="/contact" className='navigation-link'>Contact</NavLink>
                 </nav>
                 <div className="login">
                   <Link className='login-link'>Login</Link>

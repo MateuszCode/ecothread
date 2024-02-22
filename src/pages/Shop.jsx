@@ -32,6 +32,7 @@ export default function Shop() {
                 setLoading(false)
             }
         }
+        console.log("dataFetched")
         fetchData()
     }, [])
 
@@ -77,6 +78,7 @@ export default function Shop() {
         image={product.image}
         rating={product.rating.rate}
         ratingCount={product.rating.count}
+        id={product.id}
         key={product.id}
         className="product"
         />
