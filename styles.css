@@ -25,6 +25,7 @@ a {
 }
 
 
+
 .btn {
     padding: 0.6em 2em;
     color: #FBF9EF;
@@ -98,6 +99,11 @@ button {
 .login-link,
 .register-link {
     font-weight: 700;
+
+}
+
+.navigation-link:hover {
+    color: #c6b190
 
 }
 
@@ -491,4 +497,110 @@ footer {
 .sort-btn:hover {
     cursor: pointer;
     scale: 1.05
+}
+
+/* ITEM PAGE */
+
+.item-page-container {
+    margin: 0 auto;
+    width: 80%;
+    gap: 0;
+    margin-top: 2em;
+    margin-bottom: 5em
+}
+
+.item-page-img {
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    width: 200px;
+    height: 200px;
+
+}
+
+.item-page-info {
+    max-width: 300px;
+    margin: 0 auto;
+    margin-top: 4em;
+    width: 90%;
+}
+
+.item-page-title {
+    margin-bottom: 0.5em;
+    font-weight: 700
+
+}
+
+.item-page-price {
+    margin: 1em 0;
+    font-weight: 700
+
+}
+
+.item-page-description-div {
+    margin-bottom: 1em;
+}
+
+.item-page-description-heading {
+    font-weight: 700
+
+}
+
+.item-page-description {
+    margin-top: 1em;
+}
+
+.item-page-back-btn {
+    margin-left: 2.6em;
+    color: #c6b190;
+
+
+}
+
+.item-page-back-btn:hover {
+    color: rgb(16, 16, 16)
+
+}
+
+@media (min-width: 500px) {
+    .item-page-img {
+        display: block;
+        margin: 0 auto;
+        object-fit: contain;
+        width: 300px;
+        height: 300px;
+    
+    }
+}
+
+@media (min-width: 750px) {
+    .item-page-container {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+        margin: 0 auto;
+        width: 80%;
+        gap: 0;
+        margin-top: 2em;
+        margin-bottom: 5em
+    }
+    
+    .item-page-info {
+        max-width: 400px;
+        margin-left: 1em;
+        margin-top: 2em
+    }
+
+}
+
+@media (min-width: 1000px) {
+    
+.item-page-img {
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    width: 400px;
+    height: 400px;
+    margin-left: 5em;
+
+}
 }
