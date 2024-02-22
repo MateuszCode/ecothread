@@ -30,7 +30,6 @@ export default function productsPanel({productsData, filters, sort}) {
         }
 
         return sortedArray
-
     }
 
     sortProducts()
@@ -48,7 +47,6 @@ export default function productsPanel({productsData, filters, sort}) {
         key={product.id}
         className="product"
         />
-
     }) 
 
     return displayedProducts
