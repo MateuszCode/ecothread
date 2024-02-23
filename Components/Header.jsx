@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom"
 
-export default function Navigation({authorized}) {
+export default function Navigation({authenticated}) {
     
     return (
         <header>
@@ -27,7 +27,7 @@ export default function Navigation({authorized}) {
                 <div className="login">
                 <Link to="/login" className='login-link'>My cart</Link>
 
-                  {authorized ?
+                  {authenticated ?
                   <Link to="/login" className='register-link btn'>Your account</Link>
                   :
                   <Link to="/login" className='register-link btn'>Login</Link>}

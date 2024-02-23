@@ -1,7 +1,9 @@
 import React from 'react'
 import {getUserData} from '../../Data/api'
+import {Link} from "react-router-dom"
 
-export default function LoginPage({setUserData, setAuthorized}) {
+
+export default function LoginPage({setUserData, setAuthenticated}) {
     const [formData, setFormData] = React.useState({username: "", password: ""})
 
     function handleChange(event) {
@@ -37,36 +39,36 @@ export default function LoginPage({setUserData, setAuthorized}) {
 
     }
         
-        
-    
 
     return (
-        <div>
-                    <h1>Please login here</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username:
-                    <input
-                    type="text"
-                    name="username"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    />
-                </label>
-                <label>
-                    Password:
-                    <input
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                    />
-                </label>
-                <button>Login</button>
-            </form>
+        <div className="login-page-container">
+            <div className="login-page-login">
+                <h1>Log in to your account</h1>
+                <form onSubmit={handleSubmit} className="login-form">
+                        <input
+                        placeholder="Username"
+                        type="text"
+                        name="username"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                        />
+                        <input
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                        />
+                    <button className="login-page-login-btn">Log in</button>
+                </form>
+            </div>
+            <div className="register">
+                <h1>Need an account?</h1>
 
+                <Link to="/singup"><button className="register-page-register-btn">Register</button></Link>
+            </div>
         </div>
     )
 }

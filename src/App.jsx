@@ -8,24 +8,29 @@ import ItemPage from "./pages/ItemPage"
 import LoginPage from "./pages/LoginPage"
 import Footer from "../Components/Footer"
 import Header from "../Components/Header"
+import AuthRequired from "../Components/AuthRequired"
+import UserAccount from "./pages/UserAccount"
 
 export default function App() {
   const [userData, setUserData] = React.useState({})
-  const [authorized, setAuthorized] = React.useState(false)
+  const [authenticated, setAuthenticated] = React.useState(false)
   console.log(userData)
 
 
     return (
           <BrowserRouter>
-            <Header authorized={authorized}/>
+            <Header authenticated={authenticated}/>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/contact" element={<Contact />}>Contact</Route>
               <Route path="/shop/:id" element={<ItemPage />} />
-              <Route path="/login" element={<LoginPage setUserData={setUserData} setAuthorized={setAuthorized}/>}></Route>
+              <Route path="/login" element={<LoginPage setUserData={setUserData} setAuthenticated={setAuthenticated}/>}></Route>
               <Route path="/cart" element={<ItemPage/>}></Route>
+              <Route element={<AuthRequired authenticated={authenticated}/>}>
+                <Route path="/your-account" element={<UserAccount />} />
+              </Route>
             </Routes>
             <Footer />
           </BrowserRouter>
