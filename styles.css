@@ -669,6 +669,11 @@ input {
     flex-direction: column;
 }
 
+.wrong-login {
+    color: rgb(205, 42, 42);
+    margin-top: 1em;
+}
+
 @media (min-width: 750px) {
     input,
     .login-page-login-btn,

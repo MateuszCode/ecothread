@@ -1,10 +1,11 @@
 import React from 'react'
 import {getUserData} from '../../Data/api'
-import {Link} from "react-router-dom"
+import {Link, Navigate} from "react-router-dom"
 
 
-export default function LoginPage({setUserData, setAuthenticated}) {
+export default function LoginPage({setUserData, setAuthenticated, authenticated}) {
     const [formData, setFormData] = React.useState({username: "", password: ""})
+    const [wrongLoginDetails, setWrongLoginDetails] = React.useState(false)
 
     function handleChange(event) {
         setFormData(prevData => {
@@ -26,10 +27,13 @@ export default function LoginPage({setUserData, setAuthenticated}) {
           })
             .then((res) => res.json())
             .then((json) => {
-                setAuthorized(true)
+                setWrongLoginDetails(false)
+                setAuthenticated(true)
                 loginUser(formData.username, formData.password)
                })
-            .catch((err) => console.log(err))
+            .catch((err) => {
+                setWrongLoginDetails(true)
+            })
     }
 
 
@@ -41,6 +45,7 @@ export default function LoginPage({setUserData, setAuthenticated}) {
         
 
     return (
+        authenticated ? <Navigate to="/your-account"/> :
         <div className="login-page-container">
             <div className="login-page-login">
                 <h1>Log in to your account</h1>
@@ -49,7 +54,7 @@ export default function LoginPage({setUserData, setAuthenticated}) {
                         placeholder="Username"
                         type="text"
                         name="username"
-                        value={formData.email}
+                        value={formData.username}
                         onChange={handleChange}
                         required
                         />
@@ -64,6 +69,7 @@ export default function LoginPage({setUserData, setAuthenticated}) {
                     <button className="login-page-login-btn">Log in</button>
                 </form>
             </div>
+            {wrongLoginDetails ? <h4 className="wrong-login">Wrong login info. Try again!</h4> : null}
             <div className="register">
                 <h1>Need an account?</h1>
 

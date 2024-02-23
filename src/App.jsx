@@ -26,7 +26,8 @@ export default function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/contact" element={<Contact />}>Contact</Route>
               <Route path="/shop/:id" element={<ItemPage />} />
-              <Route path="/login" element={<LoginPage setUserData={setUserData} setAuthenticated={setAuthenticated}/>}></Route>
+              <Route path="/login" element={<LoginPage setUserData={setUserData} setAuthenticated={setAuthenticated}
+              authenticated={authenticated}/>}></Route>
               <Route path="/cart" element={<ItemPage/>}></Route>
               <Route element={<AuthRequired authenticated={authenticated}/>}>
                 <Route path="/your-account" element={<UserAccount />} />
