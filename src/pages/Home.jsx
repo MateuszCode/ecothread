@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom"
 import CardComponent from "../../Components/CardComponent"
 import FAQ from '../../Components/FAQComponent'
+import ItemSlideshow from '../../Components/ItemSlideshow'
 import { GiEcology } from "react-icons/gi";
 import { TbVectorBezierCircle } from "react-icons/tb";
 import { FaHeart } from "react-icons/fa";
@@ -51,6 +52,7 @@ export default function Home() {
             </div>
             <div className="explore-collection">
                 <h2>Explore our new collection</h2>
+                <ItemSlideshow />
             </div>
             <FAQ />
         </div>
