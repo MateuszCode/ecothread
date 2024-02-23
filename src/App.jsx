@@ -14,6 +14,7 @@ import UserAccount from "./pages/UserAccount"
 export default function App() {
   const [userData, setUserData] = React.useState({})
   const [authenticated, setAuthenticated] = React.useState(false)
+  const [cart, setCart] = React.useState([])
   console.log(userData)
 
 
@@ -30,7 +31,11 @@ export default function App() {
               authenticated={authenticated}/>}></Route>
               <Route path="/cart" element={<ItemPage/>}></Route>
               <Route element={<AuthRequired authenticated={authenticated}/>}>
-                <Route path="/your-account" element={<UserAccount />} />
+                <Route path="/your-account" 
+                element={<UserAccount 
+                userData={userData}
+                setUserData={setUserData}
+                setAuthenticated={setAuthenticated}/>} />
               </Route>
             </Routes>
             <Footer />

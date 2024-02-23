@@ -683,3 +683,35 @@ input {
     max-width: 400px
 }
 }
+
+/* USER ACCOUNT */
+
+.user-account-container {
+    padding-left: 2.5em
+}
+
+.user-account-headings {
+    margin-top: 1em;
+}
+
+.log-out-btn {
+    background: #35452B;
+    color: white;
+    border: 1px #35452B solid;
+    padding: 0.5em 3em;
+    margin-top: 2em;
+    border-radius: 25px
+}
+
+.log-out-btn:hover {
+    scale: 1.05;
+    cursor: pointer;
+}
+
+.user-info-container {
+    margin-left: 1em;
+}
+
+.user-details {
+    margin-top: 0.5em;
+}
