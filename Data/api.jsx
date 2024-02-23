@@ -21,3 +21,15 @@ export const getProductsData=()=>{
             })
              
   }
+
+export const getUserData=(username, password)=>{
+  return fetch('https://fakestoreapi.com/users')
+        .then(data=> data.json())
+        .then(json=> {
+          const loggedUser = json.filter(user => {
+            return user.username === username && user.password === password 
+          }) 
+          return loggedUser
+
+        })
+}

@@ -5,66 +5,29 @@ import About from "./pages/About"
 import Shop from "./pages/Shop"
 import Contact from "./pages/Contact"
 import ItemPage from "./pages/ItemPage"
-import { TfiInstagram } from "react-icons/tfi";
-import { TfiFacebook } from "react-icons/tfi";
-import { TfiTwitter } from "react-icons/tfi";
-
+import LoginPage from "./pages/LoginPage"
+import Footer from "../Components/Footer"
+import Header from "../Components/Header"
 
 export default function App() {
+  const [userData, setUserData] = React.useState({})
+  const [authorized, setAuthorized] = React.useState(false)
+  console.log(userData)
+
+
     return (
           <BrowserRouter>
-            <header>
-                <Link to="/"><h1 className="name-logo">ECOTHREAD</h1></Link>
-                <nav>
-                    <NavLink to="/" 
-                    className='navigation-link'
-                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
-                    >Home</NavLink>
-                    <NavLink to="/shop" 
-                    className='navigation-link'
-                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
-                    >Shop</NavLink>
-                    <NavLink to="/about" 
-                    className='navigation-link'
-                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
-                    >About Us</NavLink>
-                    <NavLink to="/contact" 
-                    className='navigation-link'
-                    style={({ isActive }) => isActive ? {textDecoration: "underline"} : null}
-                    >Contact</NavLink>
-                </nav>
-                <div className="login">
-                  <Link className='login-link'>Login</Link>
-                  <Link className='register-link btn'>Register</Link>
-                </div>
-            </header>
+            <Header authorized={authorized}/>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/shop" element={<Shop />} />
               <Route path="/contact" element={<Contact />}>Contact</Route>
               <Route path="/shop/:id" element={<ItemPage />} />
+              <Route path="/login" element={<LoginPage setUserData={setUserData} setAuthorized={setAuthorized}/>}></Route>
+              <Route path="/cart" element={<ItemPage/>}></Route>
             </Routes>
-            <footer>
-              <h1 className="name-logo-footer">ECOTHREAD</h1>
-              <div className="nav-footer">
-                    <Link to="/" className='navigation-link-footer'>Home</Link>
-                    <Link to="/shop" className='navigation-link-footer'>Shop</Link>
-                    <Link to="/about" className='navigation-link-footer'>About Us</Link>
-                    <Link to="/contact" className='navigation-link-footer'>Contact</Link>
-              </div>
-              <div className="copyright-socials">
-                <p className="copyright">© 2024 Ecothread, All Rights Reserved.</p>
-                <div className="social-media">
-                <a><TfiInstagram className="socials-icon"/></a>
-                <a><TfiFacebook className="socials-icon"/></a>
-                <a><TfiTwitter className="socials-icon" /></a>
-
-                </div>
-
-              </div>
-              
-            </footer>
+            <Footer />
           </BrowserRouter>
         )
       

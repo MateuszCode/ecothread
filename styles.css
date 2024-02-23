@@ -148,6 +148,12 @@ button {
         margin: 1.5em;
         padding: 1em;
     }
+
+    nav {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     
     .name-logo {
         font-weight: 500;
@@ -552,13 +558,12 @@ footer {
 
 .item-page-back-btn {
     margin-left: 2.6em;
-    color: #c6b190;
-
+    color: rgb(16, 16, 16);
 
 }
 
 .item-page-back-btn:hover {
-    color: rgb(16, 16, 16)
+    color: #c6b190;
 
 }
 
