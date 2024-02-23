@@ -43,7 +43,8 @@ button {
      font-size: 0.8rem
  }
 
-.rating {
+.rating,
+.cart-fine-print {
     font-size: 0.6rem;
 }
 
@@ -58,7 +59,8 @@ button {
         font-size: 1rem
     }
 
-    .rating {
+    .rating,
+    .cart-fine-print {
         font-size: 0.7rem;
     }
 
@@ -80,7 +82,8 @@ button {
         font-size: 1.2rem
     }
     
-    .rating {
+    .rating,
+    .cart-fine-print {
         font-size: 0.8rem;
     }
 
@@ -744,3 +747,65 @@ input {
 
 }
 }
+
+/* CART CONTAINER */
+
+.cart-container {
+    display: flex;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.cart-left-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.cart-right-container {
+    width: 35%;
+    margin: 0 auto;
+    background: #768350;
+    padding: 2em;
+    border-radius: 5px;
+}
+
+.checkout-btn {
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    width: 100%;
+    padding: 0.8em;
+    border-radius: 5px;
+}
+
+.cart-total {
+    margin-bottom: 1em;
+    padding-top: 1em;
+    font-weight: 700;
+    border-top: solid white 1px;
+    color: white
+}
+
+.cart-fine-print {
+    color: rgba(255, 255, 255, 0.667);
+    margin-bottom: 1em;
+
+}
+
+.accepted-cards {
+    color: white;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.cart-icon {
+    font-size: 1.5em;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(108deg) brightness(104%) contrast(104%);
+    margin-left: 0.5em;
+    margin-bottom: 1em;
+}
+
+.cart-icon-first {
+    margin-left: 0
+}
+

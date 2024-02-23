@@ -25,7 +25,7 @@ export default function Navigation({authenticated}) {
                     >Contact</NavLink>
                 </nav>
                 <div className="login">
-                <Link to="/login" className='login-link'>My cart</Link>
+                <Link to="/cart" className='login-link'>My cart</Link>
 
                   {authenticated ?
                   <Link to="/login" className='register-link btn'>Your account</Link>
