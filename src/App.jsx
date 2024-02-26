@@ -18,14 +18,17 @@ const DataContext = React.createContext()
 export default function App() {
   const [userData, setUserData] = React.useState({})
   const [authenticated, setAuthenticated] = React.useState(false)
-  const [cart, setCart] = React.useState([])
-  console.log(userData)
+  const [cart, setCart] = React.useState([
+    {productId: 20, quantity: 3},
+    {productId: 10, quantity: 2}
+  ])
+  const [favorites, setFavorites] = React.useState([])
 
 
     return (
           <BrowserRouter>
           <DataContext.Provider
-          value={{userData, setUserData, authenticated, setAuthenticated, cart, setCart}}
+          value={{userData, setUserData, authenticated, setAuthenticated, cart, setCart, favorites, setFavorites}}
           >
             <Header authenticated={authenticated}/>
             <Routes>
