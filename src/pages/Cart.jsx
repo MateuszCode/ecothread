@@ -12,6 +12,7 @@ import { SiReact, SiReactHex } from '@icons-pack/react-simple-icons';
 export default function Cart() {
     const {cart, setCart} = React.useContext(DataContext)
 
+
     console.log(cart.length)
     return (
 
@@ -19,25 +20,24 @@ export default function Cart() {
         <div className="cart-container">
             { cart.length <= 0 ?
                 <div className="cart-left-container">
-                    <h1>Your cart is empty</h1> 
+                    <h1 className="cart-heading">Your cart is empty</h1> 
                     <div>
-                        <h3>There is nothing in your cart yet</h3>
-                        <p>Log in to save or access already saved items in your shopping bag.</p>
-                        <Link to="/login">Log in</Link>
+                        <h3 className="cart-subheading">There is nothing in your cart yet</h3>
+                        <p><Link to="/login" className="cart-login-link">Log in</Link> to access already saved items in your shopping bag.</p>
+                        
                     </div>
                 </div>  : 
                 <h2></h2>
             }
-
             <div className="cart-right-container">
                 <p className="cart-total">Total </p>
                 <button className="checkout-btn">Continue to checkout</button>
                 <p className="accepted-cards">We accept</p>
                 <p>
-                <SiVisa className="cart-icon cart-icon-first" color={SiReactHex}/>
-                <SiMastercard className="cart-icon"/>
-                <SiAmericanexpress className="cart-icon"/>
-                <SiPaypal className="cart-icon"/>
+                <SiVisa className="cart-icon cart-icon-first" color={SiReactHex}/> &nbsp;
+                <SiMastercard className="cart-icon"/> &nbsp;
+                <SiAmericanexpress className="cart-icon"/> &nbsp;
+                <SiPaypal className="cart-icon"/> &nbsp;
                 <SiApplepay className="cart-icon"/>
                 </p>
                 <p className="cart-fine-print">Prices and delivery costs are not confirmed 

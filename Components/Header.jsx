@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom"
+import { FaHeart } from "react-icons/fa";
 
 export default function Navigation({authenticated}) {
     
@@ -25,6 +26,7 @@ export default function Navigation({authenticated}) {
                     >Contact</NavLink>
                 </nav>
                 <div className="login">
+                <Link to="favorites" className='favorite-icon'><FaHeart /></Link>
                 <Link to="/cart" className='login-link'>My cart</Link>
 
                   {authenticated ?

@@ -2,7 +2,10 @@ import React from 'react'
 import { useSearchParams, useLocation, useParams, Link } from "react-router-dom";
 import {getProductData} from '../../Data/api'
 import { FaStar } from "react-icons/fa";
+import {DataContext} from "../App"
 import FAQ from '../../Components/FAQComponent'
+import { FaRegHeart } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 
 export default function ItemPage() {
     const [loading, setLoading] = React.useState(true)
@@ -10,6 +13,9 @@ export default function ItemPage() {
     const [dropdown, setDropdown] = React.useState(false)
     const location = useLocation() 
     const params = useParams()
+    const {cart, setCart, favorites, setFavorites, authenticated} = React.useContext(DataContext)
+
+
 
     React.useEffect(function() {
         async function fetchData() {
@@ -26,6 +32,33 @@ export default function ItemPage() {
 
         }, [])
 
+    
+    function handleFavorites() {
+        if (authenticated) {
+            if (favorites.length) {
+                if (favorites.includes(product.id)) {
+                    const productIndex = favorites.indexOf(product.id)
+                    setFavorites(oldValue => {
+                        
+                        return oldValue.filter(index => index !== product.id)
+                    })
+                } 
+                else {
+                    setFavorites(oldValue => {
+                        return [...oldValue, product.id]
+                    })
+                }
+            }
+            else {
+                setFavorites(oldValue => {
+                    return [...oldValue, product.id]
+                })
+            }
+        }
+        else {
+            alert("Please log in to favorite items.")
+        }
+    }
 
 
     return (loading ? 
@@ -57,8 +90,18 @@ export default function ItemPage() {
                         }
                         </p>
                     </div>
-                    <button>Add to the cart</button>
-                    <button>Add to favorites</button>
+                    <div className="cart-btn-container">
+                        <button className="add-to-cart-btn">Add to the cart</button>
+                    
+                        {favorites.includes(product.id) ?
+                        <FaHeart
+                        onClick={handleFavorites} 
+                        className="favorite-btn"/> :
+                        <FaRegHeart 
+                        onClick={handleFavorites}
+                        className="favorite-btn"
+                        ></FaRegHeart>}
+                    </div>  
                 </div>
 
 
