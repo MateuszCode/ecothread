@@ -85,7 +85,8 @@ export default function FavoritesPage() {
                 <p>Want to favorite an item? Simply click the heart icon next to it.</p>
                 </div>
         } else {
-            return <h1 className="favorites-heading">Please <Link to="/login">log in</Link> to add favorite items.</h1>
+            return <h1 className="favorites-heading">
+            Please <Link to="/login" className="favorites-login">log in</Link> to add favorite items.</h1>
         }
     }
 

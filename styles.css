@@ -933,6 +933,16 @@ input {
 .favorites-heading {
     margin-bottom: 1em;
 }
+
+.favorites-login {
+    color: #35452B
+
+}
+
+.favorites-login:hover {
+    color: #768350
+}
+
 @media (min-width: 500px) {
 
     .favorite-products {
