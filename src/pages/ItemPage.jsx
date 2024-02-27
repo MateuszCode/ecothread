@@ -9,7 +9,6 @@ import { FaHeart } from "react-icons/fa";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import {db} from "../index"
 
-
 export default function ItemPage() {
     const [loading, setLoading] = React.useState(true)
     const [product, setProduct] = React.useState({})
@@ -66,7 +65,6 @@ export default function ItemPage() {
                         favorites: [...favorites, product.id]
                     })
                     setFavoritesUpdated(true)
-
                 }   
             }
             else {
@@ -74,34 +72,6 @@ export default function ItemPage() {
             }
         
     }
-    
-    // function handleFavorites() {
-    //     if (authenticated) {
-    //         if (favorites.length) {
-    //             if (favorites.includes(product.id)) {
-    //                 const productIndex = favorites.indexOf(product.id)
-    //                 setFavorites(oldValue => {
-                        
-    //                     return oldValue.filter(index => index !== product.id)
-    //                 })
-    //             } 
-    //             else {
-    //                 setFavorites(oldValue => {
-    //                     return [...oldValue, product.id]
-    //                 })
-    //             }
-    //         }
-    //         else {
-    //             setFavorites(oldValue => {
-    //                 return [...oldValue, product.id]
-    //             })
-    //         }
-    //     }
-    //     else {
-    //         alert("Please log in to favorite items.")
-    //     }
-    // }
-
 
     return (loading ? 
             <h1>Loading</h1> :
