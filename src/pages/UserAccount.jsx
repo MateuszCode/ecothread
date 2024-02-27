@@ -16,7 +16,7 @@ export default function() {
     }
 
     return (
-        userData.firstName ? 
+        userData.firstName ?
         <div className="user-account-container">
             <h1>Welcome back {userData.firstName}!</h1>
             <div className="user-info-container">
