@@ -948,12 +948,12 @@ input {
 }
 
 .favorites-login {
-    color: #35452B
+    color: #768350
 
 }
 
 .favorites-login:hover {
-    color: #768350
+    color: #c6b190
 }
 
 @media (min-width: 500px) {
