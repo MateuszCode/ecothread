@@ -11,9 +11,11 @@ import Footer from "../Components/Footer"
 import Header from "../Components/Header"
 import AuthRequired from "../Components/AuthRequired"
 import UserAccount from "./pages/UserAccount"
+import SignupPage from "./pages/SignupPage"
+import { doc, getDoc } from "firebase/firestore";
+import {db} from "./index"
 
 const DataContext = React.createContext()
-
 
 export default function App() {
   const [userData, setUserData] = React.useState({})
@@ -23,7 +25,21 @@ export default function App() {
     {productId: 10, quantity: 2}
   ])
   const [favorites, setFavorites] = React.useState([])
-
+  
+  React.useEffect(() => {
+    async function getUser() {
+      const docRef = doc(db, "users", authenticated);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        const data = docSnap.data()
+        setUserData(data)
+      } else {
+        console.log("No such document!");
+      }
+    }
+   
+    authenticated ? getUser() : null
+  }, [authenticated])  
 
     return (
           <BrowserRouter>
@@ -37,9 +53,9 @@ export default function App() {
               <Route path="/shop" element={<Shop />} />
               <Route path="/contact" element={<Contact />}>Contact</Route>
               <Route path="/shop/:id" element={<ItemPage />} />
-              <Route path="/login" element={<LoginPage setUserData={setUserData} setAuthenticated={setAuthenticated}
-              authenticated={authenticated}/>}></Route>
+              <Route path="/login" element={<LoginPage />}></Route>
               <Route path="/cart" element={<Cart/>}></Route>
+              <Route path="/signup" element={<SignupPage />}></Route>
               <Route element={<AuthRequired authenticated={authenticated}/>}>
                 <Route path="/your-account" 
                 element={<UserAccount 

@@ -18,7 +18,7 @@
     "axios": "^1.6.7",
     "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
-    "firebase": "^10.6.0",
+    "firebase": "^10.8.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
     "primereact": "^10.5.1",

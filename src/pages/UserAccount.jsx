@@ -1,30 +1,32 @@
 import React from 'react'
+import { getAuth, signOut } from "firebase/auth";
+import {DataContext} from "../App"
 
-export default function({userData, setUserData, setAuthenticated}) {
-
-    function capitalizeFirstLetter(string) {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    }
+export default function() {
+    const auth = getAuth();
+    const {setAuthenticated, userData} = React.useContext(DataContext)
 
     function handleClick() {
-        setUserData({})
-        setAuthenticated(false)
+        console.log(auth)
+        signOut(auth).then(() => {
+            setAuthenticated(false)
+          }).catch((error) => {
+            alert("We had a problem logging you out. Please try again!")
+          });
     }
 
-
-    console.log(userData)
     return (
-        userData.username ? 
+        userData.firstName ? 
         <div className="user-account-container">
-            <h1>Welcome back {userData.username}!</h1>
+            <h1>Welcome back {userData.firstName}!</h1>
             <div className="user-info-container">
             <h2 className="user-account-headings">Delievery details:</h2>
                 <div>
-                    <p className="user-details">Name: {capitalizeFirstLetter(userData.name.firstname)}</p>
-                    <p className="user-details">Last Name: {capitalizeFirstLetter(userData.name.lastname)}</p>
-                    <p className="user-details">City: {capitalizeFirstLetter(userData.address.city)}</p>
-                    <p className="user-details">Street: {capitalizeFirstLetter(userData.address.street)} {userData.address.number}</p>
-                    <p className="user-details">Zip code: {userData.address.zipcode}</p>
+                    <p className="user-details">Name: {userData.firstName}</p>
+                    <p className="user-details">Last Name: {userData.lastName}</p>
+                    <p className="user-details">City: {userData.address.city}</p>
+                    <p className="user-details">Street: {userData.address.street} {userData.address.streetNumber}</p>
+                    <p className="user-details">Zip code: {userData.address.zipCode}</p>
                     <p className="user-details">Phone: {userData.phone}</p>
                 </div>
             <h2 className="user-account-headings">Your orders:</h2>

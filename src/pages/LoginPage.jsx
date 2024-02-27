@@ -1,11 +1,17 @@
 import React from 'react'
 import {getUserData} from '../../Data/api'
 import {Link, Navigate} from "react-router-dom"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {DataContext} from "../App"
 
 
-export default function LoginPage({setUserData, setAuthenticated, authenticated}) {
-    const [formData, setFormData] = React.useState({username: "", password: ""})
+
+
+export default function LoginPage({}) {
+    const [formData, setFormData] = React.useState({email: "", password: ""})
     const [wrongLoginDetails, setWrongLoginDetails] = React.useState(false)
+    const {setAuthenticated, authenticated, setUserData} = React.useContext(DataContext)
+    const auth = getAuth();
 
     function handleChange(event) {
         setFormData(prevData => {
@@ -15,34 +21,22 @@ export default function LoginPage({setUserData, setAuthenticated, authenticated}
 
     function handleSubmit(event) {
         event.preventDefault()
-        fetch("https://fakestoreapi.com/auth/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: formData.username,
-              password: formData.password,
-            }),
-          })
-            .then((res) => res.json())
-            .then((json) => {
-                setWrongLoginDetails(false)
-                setAuthenticated(true)
-                loginUser(formData.username, formData.password)
-               })
-            .catch((err) => {
-                setWrongLoginDetails(true)
-            })
-    }
-
-
-    function loginUser(username, password) {
-        getUserData(username, password)
-        .then(data => setUserData(data[0]))
+        setWrongLoginDetails(false)
+        signInWithEmailAndPassword(auth, formData.email, formData.password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            setAuthenticated(user.uid)
+        })
+        .then(() => {
+            setFormData({email: "", password: "", repeatPassword: ""})
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setWrongLoginDetails(true)
+        });
 
     }
-        
 
     return (
         authenticated ? <Navigate to="/your-account"/> :
@@ -51,10 +45,10 @@ export default function LoginPage({setUserData, setAuthenticated, authenticated}
                 <h1>Log in to your account</h1>
                 <form onSubmit={handleSubmit} className="login-form">
                         <input
-                        placeholder="Username"
-                        type="text"
-                        name="username"
-                        value={formData.username}
+                        placeholder="E-mail"
+                        type="email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
                         required
                         />
@@ -73,7 +67,7 @@ export default function LoginPage({setUserData, setAuthenticated, authenticated}
             <div className="register">
                 <h1>Need an account?</h1>
 
-                <Link to="/singup"><button className="register-page-register-btn">Register</button></Link>
+                <Link to="/signup"><button className="register-page-register-btn">Register</button></Link>
             </div>
         </div>
     )
