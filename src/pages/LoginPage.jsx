@@ -1,5 +1,4 @@
 import React from 'react'
-import {getUserData} from '../../Data/api'
 import {Link, Navigate} from "react-router-dom"
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import {DataContext} from "../App"

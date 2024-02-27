@@ -4,24 +4,19 @@ import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import {db} from "../src/index"
+import {getFavorites} from "../Data/api"
 
 export default function HeartComponent({productId}) {
-    const [favorites, setFavorites] = React.useState([])
+    const [favorites, setFavorites] = React.useState([1, 2])
     const [updatedFavorites, setFavoritesUpdated] = React.useState(false)
     const {authenticated} = React.useContext(DataContext)
 
     React.useEffect(() => {
-        async function getFavorites() {
-          const docRef = doc(db, "users", authenticated);
-          const docSnap = await getDoc(docRef);
-          if (docSnap.exists()) {
-            const data = docSnap.data()
-            setFavorites(data.favorites)
-          } else {
-            console.log("No such document!");
-          }
+        async function fetchFavorites() {
+            const data = await getFavorites()
+            setFavorites(data)            
         }
-        authenticated ? getFavorites() : null
+        authenticated ? fetchFavorites() : null
     }, [favorites])  
 
     async function handleFavorites() {
