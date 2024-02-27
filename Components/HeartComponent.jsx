@@ -2,12 +2,12 @@ import React from 'react'
 import {DataContext} from "../src/App"
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, updateDoc } from "firebase/firestore";
 import {db} from "../src/index"
 import {getFavorites} from "../Data/api"
 
 export default function HeartComponent({productId}) {
-    const [favorites, setFavorites] = React.useState([1, 2])
+    const [favorites, setFavorites] = React.useState([])
     const [updatedFavorites, setFavoritesUpdated] = React.useState(false)
     const {authenticated} = React.useContext(DataContext)
 

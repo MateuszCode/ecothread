@@ -17,8 +17,9 @@ export default function() {
     }
 
     return (
-        userData.firstName ?
-        <div className="user-account-container">
+        <div className="user-account-page">
+        {   userData.firstName ?
+            <div className="user-account-container">
             <h1>Welcome back {userData.firstName}!</h1>
             <div className="user-info-container">
             <h2 className="user-account-headings">Delievery details:</h2>
@@ -34,15 +35,12 @@ export default function() {
                 <div>
                     <p className="user-details">You don't have any orders at the moment.</p>
                 </div>
-            <h2 className="user-account-headings">Your favorite items:</h2>
-                <div>
-                    <p className="user-details">You don't have any favoirte items at the moment.</p>
-                </div>
-
             <button className="log-out-btn"
             onClick={handleClick}>Log out</button>
             </div>
-        </div> : null
+            </div> : null}
+        </div>
+       
     )
 }
 

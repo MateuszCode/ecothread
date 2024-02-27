@@ -11,6 +11,7 @@ import Header from "../Components/Header"
 import AuthRequired from "../Components/AuthRequired"
 import UserAccount from "./pages/UserAccount"
 import SignupPage from "./pages/SignupPage"
+import FavoritesPage from "./pages/FavoritesPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { doc, getDoc } from "firebase/firestore";
 import {db} from "./index"
@@ -55,6 +56,7 @@ export default function App() {
               <Route path="/login" element={<LoginPage />}></Route>
               <Route path="/cart" element={<Cart/>}></Route>
               <Route path="/signup" element={<SignupPage />}></Route>
+              <Route path="/favorites" element={<FavoritesPage />}></Route>
               <Route element={<AuthRequired authenticated={authenticated}/>}>
                 <Route path="/your-account" 
                 element={<UserAccount 

@@ -2,11 +2,11 @@ import React from 'react'
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom"
 
-export default function Item({ title, description, price, image, rating, ratingCount, className, id}) {
+export default function Item({ title, price, image, rating, ratingCount, className, id}) {
 
     return (
        
-        <Link to={`${id}`}
+        <Link to={`/shop/${id}`}
         state={{itemId: id}}>
             <div className={`product-card ${className}`}>
                 <div className="img-container">
