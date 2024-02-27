@@ -6,15 +6,19 @@ import {DataContext} from "../App"
 import FAQ from '../../Components/FAQComponent'
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import {db} from "../index"
+
 
 export default function ItemPage() {
     const [loading, setLoading] = React.useState(true)
     const [product, setProduct] = React.useState({})
     const [dropdown, setDropdown] = React.useState(false)
+    const [favorites, setFavorites] = React.useState([])
+    const [updatedFavorites, setFavoritesUpdated] = React.useState(false)
     const location = useLocation() 
     const params = useParams()
-    const {cart, setCart, favorites, setFavorites, authenticated} = React.useContext(DataContext)
-
+    const {cart, setCart, authenticated, userData, setUserData} = React.useContext(DataContext)
 
 
     React.useEffect(function() {
@@ -32,33 +36,71 @@ export default function ItemPage() {
 
         }, [])
 
-    
-    function handleFavorites() {
-        if (authenticated) {
-            if (favorites.length) {
+
+    React.useEffect(() => {
+            async function getFavorites() {
+              const docRef = doc(db, "users", authenticated);
+              const docSnap = await getDoc(docRef);
+              if (docSnap.exists()) {
+                const data = docSnap.data()
+                setFavorites(data.favorites)
+              } else {
+                console.log("No such document!");
+              }
+            }
+            authenticated ? getFavorites() : null
+    }, [favorites])  
+
+    async function handleFavorites() {
+            setFavoritesUpdated(false)
+            if (authenticated) {
+                const docRef = doc(db, "users", authenticated);
                 if (favorites.includes(product.id)) {
-                    const productIndex = favorites.indexOf(product.id)
-                    setFavorites(oldValue => {
-                        
-                        return oldValue.filter(index => index !== product.id)
+                    const newArray = favorites.filter(index => index !== product.id)
+                    await updateDoc(docRef, {
+                        favorites: newArray
                     })
-                } 
-                else {
-                    setFavorites(oldValue => {
-                        return [...oldValue, product.id]
+                    setFavoritesUpdated(true)
+                } else {
+                    await updateDoc(docRef, {
+                        favorites: [...favorites, product.id]
                     })
-                }
+                    setFavoritesUpdated(true)
+
+                }   
             }
             else {
-                setFavorites(oldValue => {
-                    return [...oldValue, product.id]
-                })
+                alert("Please log in to favorite items.")
             }
-        }
-        else {
-            alert("Please log in to favorite items.")
-        }
+        
     }
+    
+    // function handleFavorites() {
+    //     if (authenticated) {
+    //         if (favorites.length) {
+    //             if (favorites.includes(product.id)) {
+    //                 const productIndex = favorites.indexOf(product.id)
+    //                 setFavorites(oldValue => {
+                        
+    //                     return oldValue.filter(index => index !== product.id)
+    //                 })
+    //             } 
+    //             else {
+    //                 setFavorites(oldValue => {
+    //                     return [...oldValue, product.id]
+    //                 })
+    //             }
+    //         }
+    //         else {
+    //             setFavorites(oldValue => {
+    //                 return [...oldValue, product.id]
+    //             })
+    //         }
+    //     }
+    //     else {
+    //         alert("Please log in to favorite items.")
+    //     }
+    // }
 
 
     return (loading ? 
@@ -93,14 +135,19 @@ export default function ItemPage() {
                     <div className="cart-btn-container">
                         <button className="add-to-cart-btn">Add to the cart</button>
                     
-                        {favorites.includes(product.id) ?
+                        {
+                        authenticated ? 
+                        favorites.includes(product.id) ?
                         <FaHeart
                         onClick={handleFavorites} 
                         className="favorite-btn"/> :
                         <FaRegHeart 
                         onClick={handleFavorites}
-                        className="favorite-btn"
-                        ></FaRegHeart>}
+                        className="favorite-btn"/> : 
+                        <FaRegHeart 
+                        onClick={handleFavorites}
+                        className="favorite-btn"/>
+                        }
                     </div>  
                 </div>
 

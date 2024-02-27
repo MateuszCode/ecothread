@@ -24,7 +24,6 @@ export default function App() {
     {productId: 20, quantity: 3},
     {productId: 10, quantity: 2}
   ])
-  const [favorites, setFavorites] = React.useState([])
   
   React.useEffect(() => {
     async function getUser() {
@@ -44,7 +43,7 @@ export default function App() {
     return (
           <BrowserRouter>
           <DataContext.Provider
-          value={{userData, setUserData, authenticated, setAuthenticated, cart, setCart, favorites, setFavorites}}
+          value={{userData, setUserData, authenticated, setAuthenticated, cart, setCart}}
           >
             <Header authenticated={authenticated}/>
             <Routes>
