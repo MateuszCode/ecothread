@@ -1,5 +1,4 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route, Link, NavLink } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Shop from "./pages/Shop"
@@ -12,6 +11,7 @@ import Header from "../Components/Header"
 import AuthRequired from "../Components/AuthRequired"
 import UserAccount from "./pages/UserAccount"
 import SignupPage from "./pages/SignupPage"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { doc, getDoc } from "firebase/firestore";
 import {db} from "./index"
 
@@ -19,7 +19,7 @@ const DataContext = React.createContext()
 
 export default function App() {
   const [userData, setUserData] = React.useState({})
-  const [authenticated, setAuthenticated] = React.useState(false)
+  const [authenticated, setAuthenticated] = React.useState(localStorage.getItem("uid"))
   const [cart, setCart] = React.useState([
     {productId: 20, quantity: 3},
     {productId: 10, quantity: 2}

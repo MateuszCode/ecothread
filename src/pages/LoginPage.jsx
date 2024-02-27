@@ -26,6 +26,7 @@ export default function LoginPage({}) {
         .then((userCredential) => {
             const user = userCredential.user;
             setAuthenticated(user.uid)
+            localStorage.setItem("uid", user.uid);
         })
         .then(() => {
             setFormData({email: "", password: "", repeatPassword: ""})

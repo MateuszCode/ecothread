@@ -10,6 +10,7 @@ export default function() {
         console.log(auth)
         signOut(auth).then(() => {
             setAuthenticated(false)
+            localStorage.removeItem("uid")
           }).catch((error) => {
             alert("We had a problem logging you out. Please try again!")
           });

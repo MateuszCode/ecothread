@@ -43,6 +43,7 @@ export default function SignupPage() {
                 
             })
             setAuthenticated(userId)
+            localStorage.setItem("uid", user.uid)
           } catch (e) {
             console.error("Error adding document: ", e);
           }
