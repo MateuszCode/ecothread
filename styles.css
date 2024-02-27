@@ -470,6 +470,13 @@ footer {
     -moz-box-shadow: 0px 0px 3px -1px rgba(96, 96, 96, 0.659);
     box-shadow: 0px 0px 3px -1px rgba(96, 96, 96, 0.659);
     border-radius: 5px;
+    position: relative;
+}
+
+.item-card-favorite {
+    position: absolute;
+    right: 15px;
+    top: 15px
 }
 
 .product-card:hover {
@@ -486,6 +493,10 @@ footer {
     height: 100px;
 }
 
+.product-card-link-container {
+    width: 95%;
+}
+
 @media (min-width: 600px) {
     .product-card-img {
         width: 150px;
@@ -495,6 +506,8 @@ footer {
 
 .product-card-info {
     align-self: flex-start;
+    margin-top: 1em;
+    justify-self: flex-start;
 }
 
 .product-card-info > * {

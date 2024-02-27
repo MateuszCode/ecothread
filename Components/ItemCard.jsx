@@ -1,15 +1,20 @@
 import React from 'react'
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom"
+import HeartComponent from "./HeartComponent"
 
 export default function Item({ title, price, image, rating, ratingCount, className, id}) {
 
     return (
        
-        <Link to={`/shop/${id}`}
-        state={{itemId: id}}>
+        
             <div className={`product-card ${className}`}>
+                <HeartComponent productId={id} className="item-card-favorite"/>
+                <div className="product-card-link-container">
+                <Link to={`/shop/${id}`}
+                 state={{itemId: id}}>
                 <div className="img-container">
+               
                     <img src={image} className="product-card-img"/>
                 </div>
                 <div className="product-card-info">
@@ -20,9 +25,13 @@ export default function Item({ title, price, image, rating, ratingCount, classNa
                     }
                     </p>
                     <p className="product-card-price">{price} $</p>
+
+                </div>
+                </Link>
+
                 </div>
             </div>
-        </Link> 
+
     )
 }
 

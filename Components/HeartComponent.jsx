@@ -6,7 +6,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import {db} from "../src/index"
 import {getFavorites} from "../Data/api"
 
-export default function HeartComponent({productId}) {
+export default function HeartComponent({productId, className}) {
     const [favorites, setFavorites] = React.useState([])
     const [updatedFavorites, setFavoritesUpdated] = React.useState(false)
     const {authenticated} = React.useContext(DataContext)
@@ -46,12 +46,12 @@ return (authenticated ?
     favorites.includes(productId) ?
     <FaHeart
     onClick={handleFavorites} 
-    className="favorite-btn"/> :
+    className={`favorite-btn ${className}`}/> :
     <FaRegHeart 
     onClick={handleFavorites}
-    className="favorite-btn"/> : 
+    className={`favorite-btn ${className}`}/> : 
     <FaRegHeart 
     onClick={handleFavorites}
-    className="favorite-btn"/>)
+    className={`favorite-btn ${className}`}/>)
     
 }
