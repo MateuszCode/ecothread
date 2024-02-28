@@ -969,3 +969,18 @@ input {
         grid-template:  1fr 1fr 1fr / 1fr 1fr 1fr ;   
     }
 }
+
+/* SIGNUP PAGE */
+
+.signup-page-container {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 2em;
+}
+
+@media (min-width: 750px) {
+    .signup-page-container {
+        margin-top: 1em;
+        margin-left: 4em;
+    }
+}

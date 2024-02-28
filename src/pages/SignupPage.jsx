@@ -92,7 +92,7 @@ export default function SignupPage() {
  
     return (
         authenticated ? <Navigate to="/your-account"/> :
-        <div>
+        <div className="signup-page-container">
              <h1>Create a new account</h1>
         <form className="login-form" onSubmit={handleSubmit}>
                 <input
@@ -171,7 +171,7 @@ export default function SignupPage() {
                 />
                    <input
                 placeholder="Phone"
-                type="numbers"
+                type="number"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
