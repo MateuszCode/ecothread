@@ -4,7 +4,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import {db} from "../src/index"
 import {getCart} from "../Data/api"
 
-export default function AddToCartButton({productId, className, text}) {
+export default function AddToCartButton({productId, className, children}) {
     const {authenticated, cart, setCart} = React.useContext(DataContext)
     const [updatedCart, setCartUpdated] = React.useState(false)
 
@@ -49,7 +49,7 @@ export default function AddToCartButton({productId, className, text}) {
 
     return <div className={className}
             onClick={handleClick}
-            >{text}</div>
+            >{children}</div>
 
 }
 
