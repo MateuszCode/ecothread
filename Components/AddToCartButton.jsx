@@ -47,9 +47,12 @@ export default function AddToCartButton({productId, className, children}) {
         }
     }
 
-    return <div className={className}
-            onClick={handleClick}
-            >{children}</div>
+    return <div>
+                <div className={className}
+                onClick={handleClick}
+                >{children}</div>
+                {/* <p>item added</p> */}
+            </div>
 
 }
 

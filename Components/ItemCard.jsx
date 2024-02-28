@@ -2,12 +2,17 @@ import React from 'react'
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom"
 import HeartComponent from "./HeartComponent"
+import AddToCartButton from "./AddToCartButton"
+import { IoIosAddCircle } from "react-icons/io";
 
 export default function ItemCard({ title, price, image, rating, ratingCount, className, id}) {
 
     return (
             <div className={`product-card ${className}`}>
                 <HeartComponent productId={id} className="item-card-favorite"/>
+                    <AddToCartButton productId={id} className="item-card-add-btn">
+                        <IoIosAddCircle/>
+                    </AddToCartButton>
                 <div className="product-card-link-container">
                 <Link to={`/shop/${id}`}
                  state={{itemId: id}}>
