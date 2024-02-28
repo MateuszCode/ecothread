@@ -20,11 +20,8 @@ const DataContext = React.createContext()
 
 export default function App() {
   const [userData, setUserData] = React.useState({})
+  const [cart, setCart] = React.useState({})
   const [authenticated, setAuthenticated] = React.useState(localStorage.getItem("uid"))
-  const [cart, setCart] = React.useState([
-    {productId: 20, quantity: 3},
-    {productId: 10, quantity: 2}
-  ])
   
   React.useEffect(() => {
     async function getUser() {

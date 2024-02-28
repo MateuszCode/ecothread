@@ -36,3 +36,14 @@ export const getProductsData=()=>{
     }
   }
 
+  export async function getCart() {
+    const docRef = doc(db, "users", localStorage.getItem("uid"));
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = docSnap.data()
+      return data.cart
+    } else {
+      console.log("No such document!");
+    }
+  }
+

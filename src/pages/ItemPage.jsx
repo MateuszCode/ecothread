@@ -1,15 +1,17 @@
 import React from 'react'
-import { useLocation, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {getProductData} from '../../Data/api'
 import { FaStar } from "react-icons/fa";
 import FAQ from '../../Components/FAQComponent'
 import HeartComponent from '../../Components/HeartComponent'
+import AddToCartButton from '../../Components/AddToCartButton'
 
 export default function ItemPage() {
     const [loading, setLoading] = React.useState(true)
     const [product, setProduct] = React.useState({})
     const [dropdown, setDropdown] = React.useState(false)
     const params = useParams()
+
 
     React.useEffect(function() {
         async function fetchData() {
@@ -55,7 +57,9 @@ export default function ItemPage() {
                         </p>
                     </div>
                     <div className="cart-btn-container">
-                        <button className="add-to-cart-btn">Add to the cart</button>
+                        <AddToCartButton 
+                        productId={params.id}
+                        className="add-to-cart-btn"/>
                         <HeartComponent productId={product.id}/>
                     </div>  
                 </div>
