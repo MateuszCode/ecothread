@@ -10,13 +10,11 @@ export default function FavoritesPage() {
     const [favoriteProducts, setFavoriteProducts] = React.useState([])
     const [productsData, setProductsData] = React.useState([])
     React.useEffect(function() {
-
         async function fetchData() {
             try {
             const json = await getProductsData()
             setProductsData(json)
             } finally {
-            console.log(productsData)
             }
         }
         fetchData()
