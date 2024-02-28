@@ -4,9 +4,11 @@ import { doc, updateDoc } from "firebase/firestore";
 import {db} from "../src/index"
 import {getCart} from "../Data/api"
 
-export default function AddToCartButton({productId, className, children}) {
+export default function AddToCartButton({productId, className, children, popUpClass}) {
     const {authenticated, cart, setCart} = React.useContext(DataContext)
     const [updatedCart, setCartUpdated] = React.useState(false)
+    const [popUpDisplay, setPopUpDisplay] = React.useState(false)
+    console.log(popUpClass)
 
     React.useEffect(() => {
         async function fetchCart() {
@@ -22,6 +24,7 @@ export default function AddToCartButton({productId, className, children}) {
     async function handleClick() {
         const docRef = doc(db, "users", authenticated);
         if (authenticated) {
+            setPopUpDisplay(true)
             if(cart[productId]) {
                 setCart(oldCart => {
                     return {
@@ -41,6 +44,9 @@ export default function AddToCartButton({productId, className, children}) {
                 })
             }
             setCartUpdated(true)
+            setTimeout(() => {
+                setPopUpDisplay(false);
+              }, 1200);
         }
         else {
             alert("Please log in to add items to the cart.")
@@ -49,9 +55,12 @@ export default function AddToCartButton({productId, className, children}) {
 
     return <div>
                 <div className={className}
-                onClick={handleClick}
-                >{children}</div>
-                {/* <p>item added</p> */}
+                onClick={handleClick}>
+                    {children} 
+                </div>
+                {popUpDisplay ?
+                <p className={popUpClass}>Added to the cart.</p> :
+                null}
             </div>
 
 }
