@@ -663,6 +663,12 @@ footer {
     
 }
 
+.add-to-cart-popup {
+    position: absolute;
+    margin-top: 0.5em;
+    margin-left: 0.1em
+}
+
 .favorite-btn {
     filter: invert(50%) sepia(13%) saturate(1071%) hue-rotate(34deg) brightness(96%) contrast(88%);
     margin-left: 1em;

@@ -8,7 +8,6 @@ export default function AddToCartButton({productId, className, children, popUpCl
     const {authenticated, cart, setCart} = React.useContext(DataContext)
     const [updatedCart, setCartUpdated] = React.useState(false)
     const [popUpDisplay, setPopUpDisplay] = React.useState(false)
-    console.log(popUpClass)
 
     React.useEffect(() => {
         async function fetchCart() {
