@@ -51,6 +51,7 @@ export default function LoginPage({}) {
                         value={formData.email}
                         onChange={handleChange}
                         required
+                        className="login-input"
                         />
                         <input
                         placeholder="Password"
@@ -59,6 +60,7 @@ export default function LoginPage({}) {
                         value={formData.password}
                         onChange={handleChange}
                         required
+                        className="login-input"
                         />
                     <button className="login-page-login-btn">Log in</button>
                 </form>

@@ -102,6 +102,8 @@ export default function SignupPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
                 <input
                 placeholder="Password"
@@ -111,6 +113,8 @@ export default function SignupPage() {
                 onChange={handleChange}
                 required
                 minLength={8}
+                className="login-input"
+
                 />
                 <input
                 placeholder="Repeat password"
@@ -120,6 +124,8 @@ export default function SignupPage() {
                 onChange={handleChange}
                 required
                 minLength={8}
+                className="login-input"
+
                 />
                 <input
                 placeholder="First Name"
@@ -128,6 +134,8 @@ export default function SignupPage() {
                 value={formData.firstName}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
                 <input
                 placeholder="Last Name"
@@ -136,6 +144,8 @@ export default function SignupPage() {
                 value={formData.lastName}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
                 <input
                 placeholder="Street"
@@ -144,6 +154,8 @@ export default function SignupPage() {
                 value={formData.street}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
                 <input
                 placeholder="Street Number"
@@ -152,6 +164,8 @@ export default function SignupPage() {
                 value={formData.streetNumber}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
                 <input
                 placeholder="City"
@@ -160,6 +174,8 @@ export default function SignupPage() {
                 value={formData.city}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
                 <input
                 placeholder="Zip code"
@@ -168,6 +184,8 @@ export default function SignupPage() {
                 value={formData.zipCode}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
                    <input
                 placeholder="Phone"
@@ -176,6 +194,8 @@ export default function SignupPage() {
                 value={formData.phone}
                 onChange={handleChange}
                 required
+                className="login-input"
+
                 />
             <button className="login-page-login-btn">Sign up</button>
         </form>
