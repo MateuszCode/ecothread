@@ -711,7 +711,7 @@ footer {
     flex-direction: column;
 }
 
-input,
+.login-input,
 .login-page-login-btn,
 .register-page-register-btn {
     text-decoration: none;
@@ -723,7 +723,7 @@ input,
    
 }
 
-input {
+.login-input {
     border-bottom: 1px rgb(16, 16, 16) solid
 }
 
@@ -762,7 +762,7 @@ input {
 }
 
 @media (min-width: 750px) {
-    input,
+    .login-input,
     .login-page-login-btn,
     .register-page-register-btn {
     width: 30%;
@@ -983,4 +983,62 @@ input {
         margin-top: 1em;
         margin-left: 4em;
     }
+}
+
+/* CONTACT PAGE */
+
+.contact-page {
+    width: 80%;
+    margin: 0 auto;
+    min-height: 450px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column
+}
+.contact-input,
+.contact-message,
+.contact-btn {
+    text-decoration: none;
+    outline: none;
+    border: none;
+    padding: 0.6em;
+    margin-top: 1em;
+    width: 100%;
+    border: 1px solid black;
+    width: 100%;
+    
+    
+}
+
+.contact-btn {
+    color: #FBF9EF;
+    background-color: #35452B;
+    border: 1px solid #35452B;
+
+}
+
+.contact-btn:hover {
+    cursor: pointer;
+    scale: 1.01
+}
+.contact-message {
+    resize: none;
+    min-height: 200px
+}
+
+.submit-message {
+    margin-top: 1em;
+}
+
+@media (min-width: 750px) {
+    .contact-input,
+    .contact-textarea,
+    .contact-btn,
+    .contact-message  {
+    width: 40%;
+    min-width: 300px;
+    max-width: 400px
+}
 }

@@ -24,11 +24,11 @@ export default function Contact() {
         setIsSubmitting(true)
         emailjs.sendForm('default_service', 'contact_form', event.target).then(
             (response) => {
-                setSubmitMessage("We have received your message. We will get back to you as soon as possible")
+                setSubmitMessage(<p className="submit-message">We have received your message. We will get back to you as soon as possible!</p>)
                 setIsSubmitting(false)
             },
             (error) => {
-                setSubmitMessage("There have been some problem with sending your message. Please try again!")
+                setSubmitMessage(<p className="submit-message">There have been some problem with sending your message. Please try again!</p>)
                 setIsSubmitting(false)
             },
           );
@@ -36,25 +36,31 @@ export default function Contact() {
         event.target.reset()
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="contact-page">
+            <h1>Send us a message!</h1>
+            <form onSubmit={handleSubmit}
+            className="contact-form">
                 <input
                 placeholder="Email"
                 type="email"
                 name="email"
-                required/>
+                required
+                className="contact-input"/>
                 <input
                 placeholder="Name"
                 type="text"
                 name="name"
-                required/>
+                required
+                className="contact-input"/>
                 <textarea 
                 placeholder="Message"
                 type="text"
                 name="message"
-                required/>
-                <button disabled={isSubmitting}>
-                    Submit
+                required
+                className="contact-message"/>
+                <button disabled={isSubmitting}
+                className="contact-btn">
+                    {isSubmitting ? "Processing..." : "Submit"}
                 </button>
                 {submitMessage}
             </form>
