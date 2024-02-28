@@ -59,7 +59,8 @@ export default function ItemPage() {
                     <div className="cart-btn-container">
                         <AddToCartButton 
                         productId={params.id}
-                        className="add-to-cart-btn"/>
+                        className="add-to-cart-btn"
+                        text="Add to the cart"/>
                         <HeartComponent productId={product.id}/>
                     </div>  
                 </div>
