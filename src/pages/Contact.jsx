@@ -2,11 +2,8 @@ import React from 'react'
 import emailjs from '@emailjs/browser';
 
 export default function Contact() {
-    const [userData, setUserData] = React.useState({
-        email: "",
-        name: "",
-        message: ""
-    })
+    const [submitMessage, setSubmitMessage] = React.useState(null)
+    const [isSubmitting, setIsSubmitting] = React.useState(false)
 
     emailjs.init({
         publicKey: 'ynco8xG0soZqb1WuA',
@@ -19,23 +16,24 @@ export default function Contact() {
         },
       });
 
-    function handleChange(event) {
-        setUserData(oldUserData => {
-            return {...oldUserData, [event.target.name]: event.target.value}
-        })
-    }
+
 
     function handleSubmit(event) {
         event.preventDefault()
-        console.log("prevented")
+        setSubmitMessage(null)
+        setIsSubmitting(true)
+        emailjs.sendForm('default_service', 'contact_form', event.target).then(
+            (response) => {
+                setSubmitMessage("We have received your message. We will get back to you as soon as possible")
+                setIsSubmitting(false)
+            },
+            (error) => {
+                setSubmitMessage("There have been some problem with sending your message. Please try again!")
+                setIsSubmitting(false)
+            },
+          );
 
-        emailjs.sendForm()
-
-        setUserData({
-            email: "",
-            name: "",
-            message: "" 
-        })
+        event.target.reset()
     }
     return (
         <div>
@@ -44,26 +42,21 @@ export default function Contact() {
                 placeholder="Email"
                 type="email"
                 name="email"
-                value={userData.email}
-                required
-                onChange={handleChange}/>
+                required/>
                 <input
                 placeholder="Name"
                 type="text"
                 name="name"
-                value={userData.name}
-                required
-                onChange={handleChange}/>
+                required/>
                 <textarea 
                 placeholder="Message"
                 type="text"
                 name="message"
-                value={userData.message}
-                required
-                onChange={handleChange}/>
-                <button>
+                required/>
+                <button disabled={isSubmitting}>
                     Submit
                 </button>
+                {submitMessage}
             </form>
         </div>
     )
