@@ -10,7 +10,8 @@ export default function ItemCard({ title, price, image, rating, ratingCount, cla
     return (
             <div className={`product-card ${className}`}>
                 <HeartComponent productId={id} className="item-card-favorite"/>
-                    <AddToCartButton productId={id} className="item-card-add-btn">
+                    <AddToCartButton productId={id} className="item-card-add-btn" 
+                    popUpClass="item-card-added-item-popup">
                         <IoIosAddCircle/>
                     </AddToCartButton>
                 <div className="product-card-link-container">
