@@ -7,13 +7,28 @@ import { SiApplepay } from "react-icons/si";
 import { SiVisa } from "react-icons/si";
 import { SiPaypal } from "react-icons/si";
 import { SiReact, SiReactHex } from '@icons-pack/react-simple-icons';
+import {getCart} from "../../Data/api"
+import CartItem from "../../Components/CartItem"
 
 
 export default function Cart() {
-    const {cart, setCart} = React.useContext(DataContext)
+    const {authenticated, cart, setCart} = React.useContext(DataContext)
+    const [updatedCart, setCartUpdated] = React.useState(false)
 
+    React.useEffect(() => {
+        async function fetchCart() {
+            const data = await getCart()
+            setCart(data)   
+            setCartUpdated(false)
+    
+        }
+        authenticated ? fetchCart() : null
+    }, [updatedCart])  
 
-    console.log(cart.length)
+    const cartItems = cart ? Object.keys(cart).map(key => {
+        return <CartItem productId={key} quantity={cart[key]} key={key}/>
+    }) : null 
+
     return (
 
     <div>
@@ -24,10 +39,11 @@ export default function Cart() {
                     <div>
                         <h3 className="cart-subheading">There is nothing in your cart yet</h3>
                         <p><Link to="/login" className="cart-login-link">Log in</Link> to access already saved items in your shopping bag.</p>
-                        
                     </div>
                 </div>  : 
-                <h2></h2>
+                <div className="cart-items">
+                    {cartItems}
+                </div>
             }
             <div className="cart-right-container">
                 <p className="cart-total">Total </p>
