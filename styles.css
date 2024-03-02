@@ -994,7 +994,8 @@ footer {
     }
 
     .cart-left-container {
-        width: 45%;
+        width: 60%;
+        margin-right: 1em
     }
 
     .cart-item {
