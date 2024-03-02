@@ -5,8 +5,7 @@ import {db} from "../src/index"
 import {DataContext} from "../src/App"
 
 export default function RemoveFromCartButton({productId}) {
-    const {authenticated, cart, setCart} = React.useContext(DataContext)
-    const [updatedCart, setCartUpdated] = React.useState(false)
+    const {authenticated, cart, setCart, updatedCart, setCartUpdated} = React.useContext(DataContext)
     React.useEffect(() => {
         async function fetchCart() {
             const data = await getCart()
@@ -21,7 +20,6 @@ export default function RemoveFromCartButton({productId}) {
     async function handleClick() {
         setCartUpdated(false)
         const docRef = doc(db, "users", authenticated);
-        console.log(cart)
         await updateDoc(docRef, {
             cart: {
             ...cart,

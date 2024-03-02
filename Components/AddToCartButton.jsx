@@ -5,8 +5,7 @@ import {db} from "../src/index"
 import {getCart} from "../Data/api"
 
 export default function AddToCartButton({productId, className, children, popUpClass}) {
-    const {authenticated, cart, setCart} = React.useContext(DataContext)
-    const [updatedCart, setCartUpdated] = React.useState(false)
+    const {authenticated, cart, setCart, updatedCart, setCartUpdated} = React.useContext(DataContext)
     const [popUpDisplay, setPopUpDisplay] = React.useState(false)
 
     React.useEffect(() => {
