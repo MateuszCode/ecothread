@@ -1,10 +1,15 @@
 import React from 'react'
-import {getProductData} from '../Data/api'
+import {getProductData, getCart} from '../Data/api'
 import { Link } from "react-router-dom"
+import { doc, updateDoc } from "firebase/firestore";
+import {db} from "../src/index"
+import {DataContext} from "../src/App"
 
 export default function CartItem({productId, quantity}) {
     const [loading, setLoading] = React.useState(true)
     const [product, setProduct] = React.useState({})
+    const {authenticated, cart, setCart} = React.useContext(DataContext)
+    const [updatedCart, setCartUpdated] = React.useState(false)
 
     React.useEffect(function() {
         async function fetchData() {
@@ -19,6 +24,45 @@ export default function CartItem({productId, quantity}) {
         fetchData()
     }, [])
 
+    React.useEffect(() => {
+        async function fetchCart() {
+            const data = await getCart()
+            setCart(data)   
+            setCartUpdated(false)
+    
+        }
+        authenticated ? fetchCart() : null
+    }, [updatedCart])  
+    
+    
+    async function handleClick() {
+        const docRef = doc(db, "users", authenticated);
+        if (authenticated) {
+            if(cart[productId]) {
+                setCart(oldCart => {
+                    return {
+                        ...oldCart,
+                        [productId]: cart[productId]--
+                    }
+                })
+                await updateDoc(docRef, {
+                    cart: cart
+                })
+    
+            } else {
+                await updateDoc(docRef, {
+                    cart: {...cart,
+                        [productId]: 1
+                    }
+                })
+            }
+            setCartUpdated(true)
+        }
+        else {
+            alert("Please log in to add items to the cart.")
+        }
+    }
+
 
     return (product ?
         <div className="cart-item">
@@ -32,6 +76,7 @@ export default function CartItem({productId, quantity}) {
                 }
 
             </div>
+            <button onClick={handleClick}>Remove item</button>
         </div>
         : null)
 }
