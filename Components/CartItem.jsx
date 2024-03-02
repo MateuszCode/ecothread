@@ -30,7 +30,7 @@ export default function CartItem({productId, quantity}) {
                 <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Price:</span> {product.price}$ </p>
                 <p className="cart-product-text" ><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Quantity:</span> {quantity}</p>
                 {product.price * quantity === product.price ? null :
-                <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Total:</span> {product.price * quantity}$</p>
+                <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Total:</span> {Math.round(product.price * quantity)/100}$</p>
                 }
                 <RemoveButton productId={productId}></RemoveButton>
 
