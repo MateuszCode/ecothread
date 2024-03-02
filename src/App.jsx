@@ -22,6 +22,8 @@ export default function App() {
   const [userData, setUserData] = React.useState({})
   const [cart, setCart] = React.useState({})
   const [authenticated, setAuthenticated] = React.useState(localStorage.getItem("uid"))
+  const [updatedCart, setCartUpdated] = React.useState(false)
+
   
   React.useEffect(() => {
     async function getUser() {
@@ -41,7 +43,7 @@ export default function App() {
     return (
           <BrowserRouter>
           <DataContext.Provider
-          value={{userData, setUserData, authenticated, setAuthenticated, cart, setCart}}
+          value={{userData, setUserData, authenticated, setAuthenticated, cart, setCart, updatedCart, setCartUpdated}}
           >
             <Header authenticated={authenticated}/>
             <Routes>
