@@ -26,7 +26,9 @@ export default function Cart() {
     }, [updatedCart])  
 
     const cartItems = cart ? Object.keys(cart).map(key => {
-        return <CartItem productId={key} quantity={cart[key]} key={key}/>
+        if(cart[key] > 0){
+            return <CartItem productId={key} quantity={cart[key]} key={key}/>
+        }
     }) : null 
 
     return (
