@@ -30,6 +30,6 @@ export default function RemoveFromCartButton({productId}) {
             })
             setCartUpdated(true)
     }
-    
-    return <button onClick={handleClick}>-</button>
+
+    return <button className="remove-item" onClick={handleClick}>Remove item</button>
 }
