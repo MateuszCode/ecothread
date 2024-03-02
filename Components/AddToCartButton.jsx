@@ -19,22 +19,17 @@ export default function AddToCartButton({productId, className, children, popUpCl
         authenticated ? fetchCart() : null
     }, [updatedCart])  
     
-    
     async function handleClick() {
         const docRef = doc(db, "users", authenticated);
         if (authenticated) {
             setPopUpDisplay(true)
             if(cart[productId]) {
-                setCart(oldCart => {
-                    return {
-                        ...oldCart,
-                        [productId]: cart[productId]++
+                await updateDoc(docRef, {
+                    cart: {
+                        ...cart,
+                        [productId]: cart[productId]+1
                     }
                 })
-                await updateDoc(docRef, {
-                    cart: cart
-                })
-    
             } else {
                 await updateDoc(docRef, {
                     cart: {...cart,
@@ -61,6 +56,5 @@ export default function AddToCartButton({productId, className, children, popUpCl
                 <p className={popUpClass}>Added to the cart.</p> :
                 null}
             </div>
-
 }
 
