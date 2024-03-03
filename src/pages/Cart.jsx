@@ -9,7 +9,7 @@ import { SiPaypal } from "react-icons/si";
 import { SiReact, SiReactHex } from '@icons-pack/react-simple-icons';
 import {getCart} from "../../Data/api"
 import CartItem from "../../Components/CartItem"
-
+import FinalCart from "../../Components/FinalCart"
 
 export default function Cart() {
     const {authenticated, cart, setCart, updatedCart, setCartUpdated, totalCost} = React.useContext(DataContext)
@@ -62,7 +62,7 @@ export default function Cart() {
                 
             }
             <div className="cart-right-container">
-                <p className="cart-total">Total {totalPrice.toFixed(2)}$</p>
+                <FinalCart cart={cart}/>
                 <button className="checkout-btn">Continue to checkout</button>
                 <p className="accepted-cards">We accept</p>
                 <p>

@@ -986,6 +986,12 @@ footer {
     margin-top: 0.5em
 }
 
+.cart-price-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1em;
+}
+
 @media (min-width: 750px) {
     .cart-container {
         display: flex;
