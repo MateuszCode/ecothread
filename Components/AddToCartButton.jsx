@@ -23,12 +23,17 @@ export default function AddToCartButton({productId, className, children, popUpCl
         if (authenticated) {
             setPopUpDisplay(true)
             if(cart[productId]) {
+                if(cart[productId]+1 > 9) {
+                alert("Cannot add more items to the cart.")   
+                }
+               else {
                 await updateDoc(docRef, {
                     cart: {
                         ...cart,
                         [productId]: cart[productId]+1
                     }
                 })
+               }
             } else {
                 await updateDoc(docRef, {
                     cart: {...cart,
