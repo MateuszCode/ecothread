@@ -14,7 +14,6 @@ import FinalCart from "../../Components/FinalCart"
 export default function Cart() {
     const {authenticated, cart, setCart, updatedCart, setCartUpdated, totalCost} = React.useContext(DataContext)
     const [emptyCart, setEmptyCart] = React.useState(true)
-    const [totalPrice, setTotalPrice] = React.useState(0)
     React.useEffect(() => {
         async function fetchCart() {
             const data = await getCart()
@@ -29,9 +28,7 @@ export default function Cart() {
             return <CartItem productId={key} quantity={cart[key]} key={key}/>
         }
     }) : null 
-
    
-    
     React.useEffect(() => {
         setEmptyCart(true)
         for(let item of Object.values(cart)) {
