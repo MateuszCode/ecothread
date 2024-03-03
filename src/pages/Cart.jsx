@@ -12,7 +12,7 @@ import CartItem from "../../Components/CartItem"
 
 
 export default function Cart() {
-    const {authenticated, cart, setCart, updatedCart, setCartUpdated} = React.useContext(DataContext)
+    const {authenticated, cart, setCart, updatedCart, setCartUpdated, totalCost} = React.useContext(DataContext)
     const [emptyCart, setEmptyCart] = React.useState(true)
 
     React.useEffect(() => {
@@ -30,6 +30,14 @@ export default function Cart() {
             return <CartItem productId={key} quantity={cart[key]} key={key}/>
         }
     }) : null 
+
+    
+      
+      const values = Object.values(totalCost);
+      
+      const sum = values.reduce((accumulator, value) => {
+        return accumulator + value;
+      }, 0);
 
     return (
 
@@ -52,7 +60,7 @@ export default function Cart() {
                 
             }
             <div className="cart-right-container">
-                <p className="cart-total">Total </p>
+                <p className="cart-total">Total {sum}$</p>
                 <button className="checkout-btn">Continue to checkout</button>
                 <p className="accepted-cards">We accept</p>
                 <p>

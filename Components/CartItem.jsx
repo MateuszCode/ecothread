@@ -2,10 +2,12 @@ import React from 'react'
 import {getProductData} from '../Data/api'
 import { Link } from "react-router-dom"
 import RemoveButton from "./RemoveFromCartButton"
+import {DataContext} from "../src/App"
 
 export default function CartItem({productId, quantity}) {
     const [loading, setLoading] = React.useState(true)
     const [product, setProduct] = React.useState({})
+    const {totalCost, setTotalCost} = React.useContext(DataContext)
 
 
     React.useEffect(function() {
@@ -20,8 +22,17 @@ export default function CartItem({productId, quantity}) {
         }
         fetchData()
     }, [])
-    
+
     const total = product.price * quantity
+ 
+
+    React.useEffect(function() {
+            setTotalCost(oldValue => {
+                return {...oldValue, [productId]: total}
+            })
+    
+    }, [total])
+
 
     return (product ?
         <div className="cart-item">
