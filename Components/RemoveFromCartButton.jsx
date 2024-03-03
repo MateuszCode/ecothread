@@ -23,7 +23,7 @@ export default function RemoveFromCartButton({productId}) {
         await updateDoc(docRef, {
             cart: {
             ...cart,
-            [productId]: cart[productId]-1       
+            [productId]: 0      
             }
             })
             setCartUpdated(true)
