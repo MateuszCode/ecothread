@@ -18,16 +18,11 @@ export default function Cart() {
     React.useEffect(() => {
         async function fetchCart() {
             const data = await getCart()
-            setCart(data)   
-            setEmptyCart(true)
-            setEmptyCart(() => {
-                if (Object.values(cart).every(item => item > 0)) {
-                    return false
-                }
-            })
+            setCart(data)              
+
         }
         authenticated ? fetchCart() : null
-    }, [updatedCart])  
+    }, [])  
 
     const cartItems = cart ? Object.keys(cart).map(key => {
         if(cart[key] > 0){
@@ -35,19 +30,16 @@ export default function Cart() {
         }
     }) : null 
 
-    React.useEffect(() => {
-        const values = Object.values(totalCost);
-        const sum = values.reduce((accumulator, value) => {
-          return accumulator + value;
-        }, 0);
-        setTotalPrice(sum)
-    }, [totalCost])
+   
     
-    console.log(cart)
-    console.log(cartItems)
-    console.log(emptyCart)
-    console.log(totalPrice)
-     
+    React.useEffect(() => {
+        setEmptyCart(true)
+        for(let item of Object.values(cart)) {
+            if (item > 0) {
+                setEmptyCart(false)
+            }
+    }
+    }, [cart])
 
     return (
 
