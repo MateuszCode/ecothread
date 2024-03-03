@@ -20,12 +20,12 @@ export default function CartItem({productId, quantity}) {
     
 
     return (
-            <div>
-                <select onChange={handleChange} value={quantity}>
+                <select className="quantity-selector"onChange={handleChange} value={quantity}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
                     <option value={3}>3</option>
+                    <option value={4}>4</option>
+                    <option value={5}>5</option>
                 </select>
-            </div>
             )
 }
