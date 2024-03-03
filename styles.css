@@ -968,6 +968,7 @@ footer {
     display: flex;
     margin-bottom: 2em;
     align-items: center;
+    position: relative
 }
 
 .cart-product-text {
@@ -982,8 +983,11 @@ footer {
     border: none;
     background: inherit;
     cursor: pointer;
-    color: rgb(199, 92, 92);
-    margin-top: 0.5em
+    font-size: 1.2em;
+    margin-top: 0.5em;
+    position: absolute;
+    right: 6px;
+    top: 0px
 }
 
 .cart-price-container {

@@ -36,7 +36,12 @@ export default function CartItem({productId, quantity}) {
         <div className="cart-item">
             <img src={product.image} className="cart-img"/>
             <div className="cart-product-info">
-                <Link to={`/shop/${productId}`}><h3 className="cart-product-heading">{product.title}</h3></Link>
+                <Link to={`/shop/${productId}`}>
+                    <h3 className="cart-product-heading"> 
+                    {product.title.length > 30 ?
+                    `${product.title.substring(0, 30)}...` : 
+                    product.title}</h3>
+                </Link>
                 <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Price:</span> {product.price ? product.price : null}$ </p>
                 <p className="cart-product-text" ><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Quantity:</span>
                 <QuantitySelector quantity={quantity} productId={productId}/>
@@ -46,7 +51,8 @@ export default function CartItem({productId, quantity}) {
                 <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Total:</span> {total.toFixed(2)}$</p>
                 : null
                 }
-                <RemoveButton productId={productId}></RemoveButton>
             </div>
+            <RemoveButton productId={productId}></RemoveButton>
+
         </div>)
 }

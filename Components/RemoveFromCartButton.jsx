@@ -3,6 +3,7 @@ import {getCart} from '../Data/api'
 import { doc, updateDoc } from "firebase/firestore";
 import {db} from "../src/index"
 import {DataContext} from "../src/App"
+import { CiTrash } from "react-icons/ci";
 
 export default function RemoveFromCartButton({productId}) {
     const {authenticated, cart, setCart, updatedCart, setCartUpdated} = React.useContext(DataContext)
@@ -29,5 +30,6 @@ export default function RemoveFromCartButton({productId}) {
             setCartUpdated(true)
     }
 
-    return <button className="remove-item" onClick={handleClick}>Remove item</button>
+    return <button className="remove-item" onClick={handleClick}><CiTrash />
+    </button>
 }
