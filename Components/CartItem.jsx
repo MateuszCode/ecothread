@@ -39,10 +39,12 @@ export default function CartItem({productId, quantity}) {
             <img src={product.image} className="cart-img"/>
             <div className="cart-product-info">
                 <Link to={`/shop/${productId}`}><h3 className="cart-product-heading">{product.title}</h3></Link>
-                <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Price:</span> {product.price}$ </p>
+                <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Price:</span> {product.price ? product.price : null}$ </p>
                 <p className="cart-product-text" ><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Quantity:</span> {quantity}</p>
                 {product.price * quantity === product.price ? null :
+                product.price ? 
                 <p className="cart-product-text"><span style={{fontWeight:"bold", color:"rgb(53, 69, 43)"}}>Total:</span> {total.toFixed(2)}$</p>
+                : null
                 }
                 <RemoveButton productId={productId}></RemoveButton>
 
