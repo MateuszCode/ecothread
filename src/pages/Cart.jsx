@@ -14,13 +14,17 @@ import CartItem from "../../Components/CartItem"
 export default function Cart() {
     const {authenticated, cart, setCart, updatedCart, setCartUpdated, totalCost} = React.useContext(DataContext)
     const [emptyCart, setEmptyCart] = React.useState(true)
-
+    const [totalPrice, setTotalPrice] = React.useState(0)
     React.useEffect(() => {
         async function fetchCart() {
             const data = await getCart()
             setCart(data)   
-            setEmptyCart(Object.values(cart).every(item => item === 0))
-            
+            setEmptyCart(true)
+            setEmptyCart(() => {
+                if (Object.values(cart).every(item => item > 0)) {
+                    return false
+                }
+            })
         }
         authenticated ? fetchCart() : null
     }, [updatedCart])  
@@ -31,13 +35,19 @@ export default function Cart() {
         }
     }) : null 
 
+    React.useEffect(() => {
+        const values = Object.values(totalCost);
+        const sum = values.reduce((accumulator, value) => {
+          return accumulator + value;
+        }, 0);
+        setTotalPrice(sum)
+    }, [totalCost])
     
-      
-      const values = Object.values(totalCost);
-      
-      const sum = values.reduce((accumulator, value) => {
-        return accumulator + value;
-      }, 0);
+    console.log(cart)
+    console.log(cartItems)
+    console.log(emptyCart)
+    console.log(totalPrice)
+     
 
     return (
 
@@ -60,7 +70,7 @@ export default function Cart() {
                 
             }
             <div className="cart-right-container">
-                <p className="cart-total">Total {sum}$</p>
+                <p className="cart-total">Total {totalPrice.toFixed(2)}$</p>
                 <button className="checkout-btn">Continue to checkout</button>
                 <p className="accepted-cards">We accept</p>
                 <p>
