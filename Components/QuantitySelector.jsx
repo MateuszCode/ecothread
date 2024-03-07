@@ -8,11 +8,10 @@ export default function CartItem({productId, quantity}) {
 
     async function handleChange(event) {
         const docRef = doc(db, "users", authenticated);
-        console.log(event.target.value)
         await updateDoc(docRef, {
             cart: {
                 ...cart,
-                [productId]: event.target.value
+                [productId]: Number(event.target.value)
             }
         })
         setCartUpdated(true)
